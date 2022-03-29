@@ -1,0 +1,57 @@
+<!-- Create an module in which images are displayed two images next to each other (and you can slide through the images)
+<div class='card' style='width:100%'>
+    <div class='card-body-images' >
+        <div class='image-slider-container'>
+            <div class='imageSlider' ngif='info.length>0' ng-clock>
+            <h4>Images associated with the study</h4>
+            <carousel>
+                <slide>
+                <div class="row-md-6 row-xs-6">
+                    <div class='column'>
+                        <figcaption >{{info[0]}}</figcaption>
+                        <img ng-src="images/{{info[0]}}"  style="height:200px;width:200px" />
+                    </div>
+                    <div class='column'>
+                        <figcaption> {{info[1]}}</figcaption>
+                        <img ng-src="images/{{info[1]}}"  style="height:200px;width:200px" />
+                    </div>
+                </div>
+            </slide>
+            </carousel>
+            </div>
+        </div>
+    </div>
+</div>
+-->
+
+<div class='card' style='width:100%'>
+    <h4>Images in study</h4>
+
+    <div class='card-body-images' ngif='info.length>0' ng-clock>
+        <div id="carouselImagesStudy" class="carousel col-md-10" data-ride="carousel" data-interval="false">
+            <div class="carousel-inner">
+              <div class="carousel-item" ng-class="{active:!$index}" ng-repeat='image in info track by $index'>
+                  <div class='row-md-6 row-xs-6'>
+                    <div class='col-md-5'>
+                        <figcaption>{{info[$index]}}</figcaption>
+                        <img class="d-block w-100" ng-src="images/{{info[$index]}}" alt="">
+                    </div>
+                    <div class='col-md-5'>
+                        <figcaption>{{info[$index+1]}}</figcaption>
+                        <img class="d-block w-100" ng-src="images/{{info[$index+1]}}" alt="">
+                    </div>
+                  </div>
+              </div>
+
+            </div>
+            <a class="carousel-control-prev" href="#carouselImagesStudy" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carouselImagesStudy" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>  
+        </div>
+    </div>
+</div>

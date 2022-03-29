@@ -1,0 +1,59 @@
+<!doctype html>
+<html >
+ <head>
+  <script   src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.4/angular.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    .container-fluid{
+      border: 2px solid blue;
+      padding: 10px;
+      border-radius: 10px;
+      background-color:blue;
+      color:white;
+    }
+    .tab{
+      padding:5px;
+    }
+
+    .capture-content{
+      border: 1px solid lightblue;
+      border-radius: 10px;
+    }
+
+  </style>
+</head>
+ 
+ <body ng-app="BiomaterialAtlas" >  <div ng-controller="indexCtrl as app">
+   <!-- navigation panel -->
+   <div>
+   <div class="container-fluid" id="'TopBarAtlas">
+    <div class="ods-box" ng-init="tabselector = 'Home'">
+      <div class='tabs'>
+        <a class="tab" ng-click="tabselector = 'Home'" ng-class="{'activetab' : tabselector == 'Home'}">Home</a>
+        <a class="tab" ng-click="tabselector = 'DataRepo'" ng-class="{'activetab' : tabselector == 'DataRepo'}">Data repository</a>
+      </div>
+  </div>
+</div>
+  <div class="ods-box">
+    <div ng-if="tabselector == 'Home'">
+      <div class="capture-content">
+        <home-welcome></home-welcome>
+        <!-- Home content for the Biomaterial Atlas-->
+        
+      </div>
+    </div>
+   </div>
+
+      </div>
+    <!-- Controllers-->
+    <script src="/js/controllers/index.js"></script>
+
+    <!-- Services-->
+    <!-- directives -->
+    <script src='/js/directives/homeWelcome.js'></script>
+  </body>
+  
+</html>
