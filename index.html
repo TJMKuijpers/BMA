@@ -6,53 +6,64 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <style>
-    .container-fluid{
-      border: 2px solid blue;
-      padding: 10px;
-      border-radius: 10px;
-      background-color:blue;
-      color:white;
-    }
-    .tab{
-      padding:5px;
-    }
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
-    .capture-content{
-      border: 1px solid lightblue;
-      border-radius: 10px;
-    }
-
-  </style>
 </head>
  
- <body ng-app="BiomaterialAtlas" >  <div ng-controller="indexCtrl as app">
+ <body ng-app="BiomaterialAtlas" >  
+   <div ng-controller="indexCtrl as app">
    <!-- navigation panel -->
    <div>
-   <div class="container-fluid" id="'TopBarAtlas">
+   <div class="container-fluid-top" id="'TopBarAtlas">
     <div class="ods-box" ng-init="tabselector = 'Home'">
       <div class='tabs'>
         <a class="tab" ng-click="tabselector = 'Home'" ng-class="{'activetab' : tabselector == 'Home'}">Home</a>
         <a class="tab" ng-click="tabselector = 'DataRepo'" ng-class="{'activetab' : tabselector == 'DataRepo'}">Data repository</a>
+        <a class="tab" ng-click="tabselector = 'DataUpload" ng-class="{'activetab': tabselector == 'DataUpload'}">Upload data</a>
+        <a class="tab" ng-click="tabselector = 'About'" ng-class="{'activetab : tabselector == 'About'}">About</a>
       </div>
   </div>
 </div>
   <div class="ods-box">
     <div ng-if="tabselector == 'Home'">
-      <div class="capture-content">
-        <home-welcome></home-welcome>
         <!-- Home content for the Biomaterial Atlas-->
-        
-      </div>
+        <home-welcome></home-welcome>
     </div>
-   </div>
-
+    <div ng-if="tabselector == 'DataRepo'">
+    <div class="'row">  
+    <!-- left panel area-->
+    <div class="col-md-2 col-sm-1 hidden-xs display-table-cell v-align box" style="height:100%" id="navigation">
+      <div class="search hidden-xs hidden-sm">
+        <input type="text" placeholder="Search a data set"  ng-model="search"/>
       </div>
+      <div>
+        <!-- Navigation panel to search the database-->
+      </div>
+  </div> 
+  <!-- center and rightside panel-->
+  <div class="col-md-10 col-sm-11 display-table-cell v-align" >
+    <div class="'row">
+      <p>The Biomaterial Atlas contains 15 studies</p>
+    </div>
+    <div class="row">
+      <!-- To visualize the data-->
+
+    </div>
+  </div>
+
+    </div>  
+      <!-- end of the tab selector DataRepo-->
+    </div>
+
+  </div>
+    <!-- stylesheet-->
+    <link rel="stylesheet" href="style.css">
     <!-- Controllers-->
     <script src="/js/controllers/index.js"></script>
 
     <!-- Services-->
     <!-- directives -->
+    <script src="/js/directives/dataRepository.js"></script>
     <script src='/js/directives/homeWelcome.js'></script>
   </body>
   
