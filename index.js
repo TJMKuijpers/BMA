@@ -4,20 +4,20 @@ myApp.config(function($stateProvider) {
   var homeState = {
     name: 'home',
     url: '',
-    templateUrl: '/public/js/directives/homeWelcome.html'
+    templateUrl: '/js/directives/homeWelcome.html'
   }
 
   var repoState ={
       name:'repo',
       url:'/bma',
-      component:'repository'
+      component:'dataRepository'
 
   }
 
   var aboutState = {
     name: 'about',
     url: '/about',
-    templateUrl: '/public/js/templates/about.html'
+    templateUrl: '/js/templates/about.html'
   }
 
   $stateProvider.state(homeState);
