@@ -1,14 +1,17 @@
 myApp.component('dataRepository',{
     templateUrl:  '/js/directives/dataRepository.html',
-    controller: ['getData',function(getData) {
+    controller: ['getData',function(getData,$scope) {
         loadedData=getData.getjson('/data/BioMaterialAtlas.json');
         loadedData.then(function(data){
-            console.log(data.data)
-            this.data=data.data;
-            console.log(this.data.ALP)
+            var data_study=data.data;
+            $scope.data=data_study
+            console.log($scope.data)
         })
-        
-    }]
+        this.studycount=4;
+        this.celltypecount=10;
+        this.publications=4;
+
+        }]
 }).factory('getData',function($http){
     //return $resource('data/BioMaterialAtlas_StudyInformation.json')
     return{

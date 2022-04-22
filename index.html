@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script   src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.4/angular.js"></script>
-    <script src="//unpkg.com/@uirouter/angularjs/release/angular-ui-router.js"></script>
+    <script   src="/lib/angularjs/angular.js"></script>
+    <script src="/lib/angularjs//angular-ui-router.js"></script>
+    <script src="lib/jquery/jquery-3.6.0-min.js"></script>
+    <script src="/lib/bootstrap/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/lib/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
     <script src="index.js"></script>
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-
-
     <style>.active { color: white; font-weight: bold; }</style>
   </head>
 
@@ -22,7 +23,7 @@
         </div>
     </div>
     <ui-view></ui-view>
-    <link rel="stylesheet" href="style.css">
+    
     <script src="/js/components/repository.js"></script>
   </body>
 </html>

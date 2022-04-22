@@ -1,29 +1,61 @@
 <!-- The home tab of the ata repository-->
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
 <!-- Sidebar -->
-<div id="'sidecolumn" class="col-6 col-sm-4">
-<nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
-    <div class="position-sticky">
-        <h1> Navigation menu</h1>
-      <div class="list-group list-group-flush mx-3 mt-4">
-        <a
-          href="#"
-          class="list-group-item list-group-item-action py-2 ripple"
-          aria-current="true"
-        >
-          <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Database selection</span>
-        </a>
-        <a href="#" class="list-group-item list-group-item-action py-2 ripple active">
-          <i class="fas fa-chart-area fa-fw me-3"></i><span>Material designs</span>
-        </a>
-        <a href="#" class="list-group-item list-group-item-action py-2 ripple"
-          ><i class="fas fa-lock fa-fw me-3"></i><span>Run custom query</span></a>
-      </div>
+<div  class="col-6 col-sm-2">
+<div class="row">
+  <h3>Navigation panel</h3>
+  <div style="border:1px solid black;">
+    <h5>Select collection</h5>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+      <label class="form-check-label" for="flexRadioDefault1">
+        TopoChip screens
+      </label>
     </div>
-  </nav>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+      <label class="form-check-label" for="flexRadioDefault2">
+        Heart valves
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+      <label class="form-check-label" for="flexRadioDefault1">
+        Supramolecular biomaterials
+      </label>
+    </div>
+
+  </div>
 </div>
-<div id="content" class="col-12 col-sm-4">
+</div>
+<div id="content" class="col-6 col-sm-10" style="background-color: green;height:100vh"> 
     <!-- We'll fill this with dummy content -->
-    <h1> Data repository of the biomaterial atlas</h1>
-</div>
+        <div class="row" style="background-color:white;">
+            <div class="col-sm-3">
+                <div class="card border-dark mb-3">
+                    <div class="card-block">
+                        <h4 class="card-title" style="text-decoration: underline;color:'blue';">Datasets</h4>
+                        <p class="card-text">There are currently {{$ctrl.studycount}} studies in the Biomaterial Atlas</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card border-dark mb-3">
+                    <div class="card-block">
+                        <h4 class="card-title">Cell lines</h4>
+                        <p class="card-text">There are {{$ctrl.celltypecount}} cell types available in the Biomaterial Atlas</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card border-dark mb-3">
+                    <div class="card-block">
+                        <h4 class="card-title">Publications</h4>
+                        <p class="card-text">There are {{$ctrl.publications}} datasets with a publication.</p>
+                    </div>
+                </div>
+            </div>
+     
+        </div>
+        <div class="row" style="background-color:blue;">
+        <p>Check this out</p></div>
+    </div>
