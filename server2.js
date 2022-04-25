@@ -1,4 +1,57 @@
+const http = require('http');
+const app = require('./app');
 
+const normalizePort = val => {
+  const port = parseInt(val, 10);
+
+  if (isNaN(port)) {
+    return val;
+  }
+  if (port >= 0) {
+    return port;
+  }
+  return false;
+};
+// make sure a valid port is always provided (whether it is provided as a number or string)
+const port = normalizePort(process.env.PORT || '8080');
+app.set('port', port);
+
+
+// Check for some errors
+const errorHandler = error => {
+  if (error.syscall !== 'listen') {
+    throw error;
+  }
+  const address = server.address();
+  const bind = typeof address === 'string' ? 'pipe ' + address : 'port: ' + port;
+  switch (error.code) {
+    case 'EACCES':
+      console.error(bind + ' requires elevated privileges.');
+      process.exit(1);
+      break;
+    case 'EADDRINUSE':
+      console.error(bind + ' is already in use.');
+      process.exit(1);
+      break;
+    default:
+      throw error;
+  }
+};
+
+
+const server = http.createServer(app);
+
+server.on('error', errorHandler);
+server.on('listening', () => {
+  const address = server.address();
+  const bind = typeof address === 'string' ? 'pipe ' + address : 'port ' + port;
+  console.log('Listening on ' + bind);
+});
+
+server.listen(port);
+
+
+/*
 // Dependencies to launch the server
 var MongoClient = require('mongodb').MongoClient;
 var express = require('express');
@@ -8,9 +61,7 @@ const app = express();
 const router = express.Router();
 const bodyParser = require('body-parser');
 const { response } = require('express');
-// Configure Routing and port
-const port = 8080;// Listen to port
-app.listen(port);
+
 // Server uses static files
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended:true}));
@@ -54,4 +105,4 @@ MongoClient.connect(url, {
 	})
 });	
 
-
+*/
