@@ -28,35 +28,19 @@ app.get('/get-data',function(request,response,next){
     var cursor = client.db(databaseName).collection('topochipscreen').find({}).toArray().then(
     function(obj){
       // send the object to the frontend
-
+      response.send(obj)
       // close the database connection
       client.close()
       });   
   
-  }) // ends the MongoClient statement    
-}); // ends the app.get statement
+  })    
+}); 
 
 
-/*
-// Connect to the MongoDB server
-const client = new MongoClient(url);
-// Function to connect to the server
-async function run() {
-  
-  try {
-    // Connect the client to the server
-    await client.connect();
-    // Establish and verify connection
-    await client.db(databaseName).command({ ping: 1 });
-    var db = client.db(databaseName);
-    var cursor = db.collection('topochipscreen').find({});
-  } catch(error){
-    console.log('There was an error')
-  }
-  return cursor
-}
+app.get('custom-query',function(request,reponse,next){
+  // this one will be used to launch a custom query and get the results
+})
 
-*/
 // export the app so we can use it on our server
 module.exports = app;
 
