@@ -27,7 +27,7 @@
   </div>
 </div>
 </div>
-<div id="content" class="col-6 col-sm-10" style="background-color: green;height:100vh"> 
+<div id="content" class="col-6 col-sm-10" style="background-color:white;height:100vh"> 
     <!-- We'll fill this with dummy content -->
         <div class="row" style="background-color:white;">
             <div class="col-sm-3">
@@ -56,6 +56,25 @@
             </div>
      
         </div>
-        <div class="row" style="background-color:blue;">
-        <p>Check this out</p></div>
+        <div class="row">
+        <div ng-app="'dataRepository"> 
+          <div class="row" ng-repeat="dataEntry in dataset track by $index" ng-if="$index % 4 == 0">
+            <div class="card border border-primary col-xs-3 "  style="width: 40rem;"
+                 ng-repeat="i in [$index, $index + 1, $index + 2, $index + 3]" 
+                 ng-if="dataset[i] != null">
+                 <div class="card-body">
+                  <p class="card-text"><b>Title: </b>{{dataset[i].Name}} </p>
+                  <p class="card-text"><b>Project name: </b>{{dataset[i].Project}} </p>
+                  <p class="card-text"><b>Lead author: </b>{{dataset[i].Lead_author}} </p>
+                  <p class="card-text"><b>DOI :</b>{{dataset[i].DOI}} </p>
+                 </div>
+              
+            </div>
+          </div>
+          </div>
+        </div>
+        </div>
+      </div>
+
+
     </div>
