@@ -2,13 +2,12 @@ myApp.component('dataRepository',{
     templateUrl:  '/js/directives/dataRepository.html',
     controller: function($http,$scope) {
         // get the data from the API /get-data
-        var dataSet = $http.get('/get-data').then(function(response){
-            var dataset=response.data;
-            console.log(dataset[0].Name)
-            return dataset;
+        let dataset=[]
+        $scope.dataset = $http.get('/get-data');
+        $scope.dataset.then(function(response){
+            return $scope.dataset=response.data;
+        }, function(error){
+            console.log('API error: ', error)
         });
-        this.studycount=4;
-        this.celltypecount=15;
-        this.publications=4;
     }
-})
+});
