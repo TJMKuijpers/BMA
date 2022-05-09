@@ -1,35 +1,37 @@
 <!-- The home tab of the ata repository-->
 <!-- Sidebar -->
-<div  class="col-6 col-sm-2">
-<div class="row">
-  <h3>Navigation panel</h3>
-  <div style="border:1px solid black;">
-    <h5>Select collection</h5>
-    <div class="form-check">
-      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-      <label class="form-check-label" for="flexRadioDefault1">
-        TopoChip screens
-      </label>
-    </div>
-    <div class="form-check">
-      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-      <label class="form-check-label" for="flexRadioDefault2">
-        Heart valves
-      </label>
-    </div>
-    <div class="form-check">
-      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-      <label class="form-check-label" for="flexRadioDefault1">
-        Supramolecular biomaterials
-      </label>
+<div class="container-fluid" >
+  <div class="row">
+    <div class="col-xs-6 col-sm-3" style="background-color:lavender;">
+        <h3>Navigation panel</h3>
+        <div style="border:1px solid black;">
+          <h5>Select collection</h5>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+            <label class="form-check-label" for="flexRadioDefault1">
+              TopoChip screens
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+            <label class="form-check-label" for="flexRadioDefault2">
+              Heart valves
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+            <label class="form-check-label" for="flexRadioDefault1">
+              Supramolecular biomaterials
+            </label>
+          </div>
+  
+      </div>
     </div>
 
-  </div>
-</div>
-</div>
-<div id="content" class="col-6 col-sm-10" style="background-color:white;height:100vh"> 
-    <!-- We'll fill this with dummy content -->
-        <div class="row" style="background-color:white;">
+
+
+    <div class="col-xs-6 col-sm-8" style="background-color:lavenderblush;" ng-app="dataRepository">
+          <div class="row" style="background-color:white;">
             <div class="col-sm-3">
                 <div class="card border-dark mb-3">
                     <div class="card-block">
@@ -56,25 +58,31 @@
             </div>
      
         </div>
-        <div class="row">
-        <div ng-app="'dataRepository"> 
-          <div class="row" ng-repeat="dataEntry in dataset track by $index" ng-if="$index % 4 == 0">
-            <div class="card border border-primary col-xs-3 "  style="width: 40rem;"
-                 ng-repeat="i in [$index, $index + 1, $index + 2, $index + 3]" 
-                 ng-if="dataset[i] != null">
-                 <div class="card-body">
-                  <p class="card-text"><b>Title: </b>{{dataset[i].Name}} </p>
-                  <p class="card-text"><b>Project name: </b>{{dataset[i].Project}} </p>
-                  <p class="card-text"><b>Lead author: </b>{{dataset[i].Lead_author}} </p>
-                  <p class="card-text"><b>DOI :</b>{{dataset[i].DOI}} </p>
-                 </div>
-              
+        <div ng-app="'dataRepository"></div>
+        <div class="row" style="background-color:white;" ng-repeat="dataEntry in dataset track by $index" ng-if="$index % 4 == 0" >
+            <div class="card"  ng-repeat="i in [$index, $index + 1, $index + 2, $index + 3]" 
+            ng-if="dataset[i] != null"style="width: 18rem;border:dash">
+              <div class="card-body">
+              <h5 class="card-title">{{dataset[i].Studytype}} </h5>
+              <p class="card-text"><b>Project name: </b>{{dataset[i].Name}} </p>
+              <p class="card-text"><b>Project name: </b>{{dataset[i].Project}} </p>
+              <p class="card-text"><b>Lead author: </b>{{dataset[i].Lead_author}} </p>
+              <p class="card-text"><b>DOI :</b>{{dataset[i].DOI}} </p>            
+            </div>
             </div>
           </div>
-          </div>
-        </div>
-        </div>
-      </div>
-
-
+   
+    
+         </div>
     </div>
+  </div>
+    <!-- Add clearfix for only the required viewport -->
+    <div class="clearfix visible-xs"></div>
+</div>
+
+
+
+
+
+
+
