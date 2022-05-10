@@ -58,9 +58,9 @@
             </div>
      
         </div>
-        <div ng-app="'dataRepository"></div>
+        <div ng-app="'dataRepository">
         <div class="row" style="background-color:white;" ng-repeat="dataEntry in dataset track by $index" ng-if="$index % 4 == 0" >
-            <div class="card"  ng-repeat="i in [$index, $index + 1, $index + 2, $index + 3]" 
+            <div class="card border border-primary col-xs-8"  ng-repeat="i in [$index, $index + 1, $index + 2, $index + 3]" 
             ng-if="dataset[i] != null"style="width: 18rem;border:dash">
               <div class="card-body">
               <h5 class="card-title">{{dataset[i].Studytype}} </h5>
@@ -71,8 +71,7 @@
             </div>
             </div>
           </div>
-   
-    
+        </div>
          </div>
     </div>
   </div>
