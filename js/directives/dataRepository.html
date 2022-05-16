@@ -60,14 +60,15 @@
         </div>
         <div ng-app="'dataRepository">
         <div class="row" style="background-color:white;" ng-repeat="dataEntry in dataset track by $index" ng-if="$index % 4 == 0" >
-            <div class="card border border-primary col-xs-8"  ng-repeat="i in [$index, $index + 1, $index + 2, $index + 3]" 
-            ng-if="dataset[i] != null"style="width: 18rem;border:dash">
+            <div class="card col-xs-8 .card-body-images"  ng-repeat="i in [$index, $index + 1, $index + 2, $index + 3]" 
+            ng-if="dataset[i] != null"style="width:auto;border:dash">
               <div class="card-body">
               <h5 class="card-title">{{dataset[i].Studytype}} </h5>
-              <p class="card-text"><b>Project name: </b>{{dataset[i].Name}} </p>
-              <p class="card-text"><b>Project name: </b>{{dataset[i].Project}} </p>
+              <p class="card-text"><b>Title: </b>{{dataset[i].Title}} </p>
+              <p class="card-text"><b>Project: </b>{{dataset[i].Project}} </p>
               <p class="card-text"><b>Lead author: </b>{{dataset[i].Lead_author}} </p>
-              <p class="card-text"><b>DOI :</b>{{dataset[i].DOI}} </p>            
+              <p class="card-text"><b>DOI:</b>{{dataset[i].DOI}} </p>           
+              <p class="card-text"><button class="btn btn-default" ui-sref="toposcreenModal"> Show study</button></p>
             </div>
             </div>
           </div>
