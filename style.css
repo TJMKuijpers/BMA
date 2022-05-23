@@ -1,3 +1,21 @@
+/* Style the tables */
+.table_study {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.th_study, .td_study {
+  text-align: left;
+  padding: 8px;
+}
+
+.tr_study:nth-child(even){background-color: #f2f2f2}
+
+.th_study {
+  background-color: blue;
+  color: white;
+}
+
 /* Sidebar on the data panel page */
 .sidebar {
   position: fixed;
@@ -54,22 +72,7 @@
 
     /* CSS styling for the different card boxes study description, research line, study results, study design */
 
-.card .card-body-description{
-  -ms-flex: 1 1 auto;
-  flex: 1 1 auto;
-  padding: 4rem;
-  background-color:white;
-  border: 1px solid black;
-  border-radius: 15px;
-}
-.card .card-body-study-design{
-  -ms-flex: 1 1 auto;
-  flex: 1 1 auto;
-  padding: 4rem;
-  background-color:white;
-  border: 1px solid black;
-  border-radius: 15px;
-}
+
 .row.content {height: 450px}
 .card .card-body-images{
   -ms-flex: 1 1 auto;
@@ -333,3 +336,38 @@ max-height: 100%;
 vertical-align: middle;
 
 }
+
+/* styling for the study cards */
+  .card-studyDescription {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 15px;
+    margin:5px;
+  }
+
+  #card-title-studyDescription{
+  color:blue;
+  font-size:18px;
+  }
+
+  .card-study-overview {
+   position: relative;
+   display: -ms-flexbox;
+   display: flex;
+   -ms-flex-direction: column;
+   flex-direction: column;
+   min-width: 0;
+   word-wrap: break-word;
+   background-clip: border-box;
+   border: 1px solid blue;
+   border-radius:10px;
+   margin:10px;
+  }
