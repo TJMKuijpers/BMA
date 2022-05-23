@@ -1,14 +1,15 @@
 myApp.component('studyView',{
     templateUrl:  '/js/templates/topochip.html',
     controller: studyViewController,
-    
+    bindings:{
+        dataset:'<'
+    }
 });
 
 function studyViewController($scope,$rootScope,$state,$stateParams){
-    this.testnaam='Tim';
-    this.testdata='08 Feb 1988'
-    this.testid=$stateParams.ID;
-   
+    this.testid=$stateParams.ID; 
     // Now we want to have the loaded data (MongoDB DB) in our scope
-
+    study_data=$rootScope.datasets.find(x =>x.ID===this.testid)
+    this.studyData=study_data; 
+    this.studyType=this.studyData.Studytype
 }
