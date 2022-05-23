@@ -1,5 +1,5 @@
 myApp.component('studyView',{
-    templateUrl:  '/js/templates/topochip.html',
+    templateUrl:  '/js/templates/studyview.html',
     controller: studyViewController,
     bindings:{
         dataset:'<'
