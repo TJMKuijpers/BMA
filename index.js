@@ -20,8 +20,15 @@ myApp.config(function($stateProvider) {
     templateUrl: '/js/templates/about.html'
   }
 
+  var aboutStudy = {
+    name: 'aboutstudy',
+    url:'/studyDescription/:ID',
+    component:'studyView'
+   }
+  
   $stateProvider.state(homeState);
   $stateProvider.state(repoState);
   $stateProvider.state(aboutState);
+  $stateProvider.state(aboutStudy);
 });
 
