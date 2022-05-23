@@ -8,7 +8,8 @@
 		<div ng-if="$ctrl.studyType =='TopoChip screen'">
 		<!-- Template for Study design -->
 		<div class="row" style="background-color:smokewhite;" >
-              <div class="card-body" style='border:solid;border-width:0.5px;'>
+			<div class="card-study-overview">
+              <div class="card-body">
               <h5 class="card-title"> <b>Title: </b> {{$ctrl.studyData.Name}} </h5>
               <p class="card-text"><b>Description:</b> {{$ctrl.studyData.Description}} </p>
 			  <p class='card-text'><b>Lead author: </b>{{$ctrl.studyData.Lead_author}} </p>
@@ -17,40 +18,41 @@
 			  <p class='card-text'><b>Date: </b> {{$ctrl.studyData.Date}}</p>
 			  <p class='card-text'><b>Summary: </b> {{$ctrl.studyData.Summary}}</p>
 			</div>
+			</div>
         </div>	
 
 		<!-- TopoChip information -->
-		<div class="row" style="background-color:smokewhite;">	
-              <div class="card-body" style='border:solid;border-width:0.5px;'>
-              <h5 class="card-title"> <b>TopoChip screen information</b> </h5>
-              <p class="card-text"><b>Description:</b> {{$ctrl.studyData.Experiment.TopoChip_screen.Description}} </p>
-			  <p class='card-text'><b>Design type: </b>{{$ctrl.studyData.Experiment.TopoChip_screen.Design_type}} </p>
-			  <p class='card-text'><b>Feature scale: </b>{{$ctrl.studyData.Experiment.TopoChip_screen.Feature_scale}} </p>
-			  <p class='card-text'><b>Number of TopoUnits: </b> {{$ctrl.studyData.Experiment.TopoChip_screen.Number_of_topounits}}</a></p>
-			  <p class='card-text'><b>Base material: </b> {{$ctrl.studyData.Experiment.TopoChip_screen.Base_material}}</p>
-			  <p class='card-text'><b>Surface treatment: </b> {{$ctrl.studyData.Experiment.TopoChip_screen.Surface_treatment}}</p>
-			  <p class='card-text'><b>Coating: </b> {{$ctrl.studyData.Experiment.TopoChip_screen.Coating}}</p>
-			  <p class='card-text'><b>Number of chips: </b> {{$ctrl.studyData.Experiment.TopoChip_screen.Number_of_chips}}</p>
-			  <p class='card-text'><b>Summary: </b> {{$ctrl.studyData.Experiment.TopoChip_screen.Summary}}</p>
+		<div class="row" style="background-color:smokewhite;">
+			<div class='col-sm-6'>
+				 <div class="card-body" style='border:solid;border-width:0.5px;'>
+				  <h5 class="card-title"> <b>TopoChip screen information</b> </h5>
+				  <p class="card-text"><b>Description:</b> {{$ctrl.studyData.Experiment.TopoChip_screen.Description}} </p>
+				  <p class='card-text'><b>Design type: </b>{{$ctrl.studyData.Experiment.TopoChip_screen.Design_type}} </p>
+				  <p class='card-text'><b>Feature scale: </b>{{$ctrl.studyData.Experiment.TopoChip_screen.Feature_scale}} </p>
+				  <p class='card-text'><b>Number of TopoUnits: </b> {{$ctrl.studyData.Experiment.TopoChip_screen.Number_of_topounits}}</a></p>
+				  <p class='card-text'><b>Base material: </b> {{$ctrl.studyData.Experiment.TopoChip_screen.Base_material}}</p>
+				  <p class='card-text'><b>Surface treatment: </b> {{$ctrl.studyData.Experiment.TopoChip_screen.Surface_treatment}}</p>
+				  <p class='card-text'><b>Coating: </b> {{$ctrl.studyData.Experiment.TopoChip_screen.Coating}}</p>
+				  <p class='card-text'><b>Number of chips: </b> {{$ctrl.studyData.Experiment.TopoChip_screen.Number_of_chips}}</p>
+				  <p class='card-text'><b>Summary: </b> {{$ctrl.studyData.Experiment.TopoChip_screen.Summary}}</p>
+				</div>
 			</div>
-        </div>	
+    
 
 		<!-- Cell culture information -->
-		<div class="row" style="background-color:smokewhite;">	
+			<div class='col-sm-6'>
               <div class="card-body" style='border:solid;border-width:0.5px;'>
-              <h5 class="card-title"> <b>Cell Culture information</b> </h5>
-              <p class="card-text"><b>Cell type:</b> {{$ctrl.studyData.Cell_culture.Cell_type}} </p>
-			  <p class='card-text'><b>Design type: </b>{{$ctrl.studyData.Cell_culture.Passage_number}} </p>
-			  <p class='card-text'><b>Feature scale: </b>{{$ctrl.studyData.Cell_culture.Culture_medium}} </p>
-	
+				<h5 class="card-title"> <b>Cell Culture information</b> </h5>
+				<p class="card-text"><b>Cell type:</b> {{$ctrl.studyData.Cell_culture.Cell_type}} </p>
+				<p class='card-text'><b>Design type: </b>{{$ctrl.studyData.Cell_culture.Passage_number}} </p>
+				<p class='card-text'><b>Feature scale: </b>{{$ctrl.studyData.Cell_culture.Culture_medium}} </p>
+			  </div>
 			</div>
         </div>
-		
-
 
 		<!-- Experimental information -->
 			<!-- Note: the object Experiments contains TopoChip fields, so we should remove those -->
-
+		
 	</div>
 	
 	<div ng-if="$ctrl.studyType =='Heartvalve study'">
@@ -69,46 +71,46 @@
 
 		<!-- Tissue Engineered heart valves -->
 		<div class="row" style="background-color:smokewhite;" >
+		   <div class='col-sm-6'>
               <div class="card-body" style='border:solid;border-width:0.5px;'>
-              <h5 class="card-title"> <b>Tissue Engineered Heart valves information</b> </h5>
-              <p class="card-text"><b>Number of samples:</b> {{$ctrl.studyData.Tissue_engineered_heart_valves.Number_of_samples}} </p>
-			  <p class="card-text"><b>Material of mesh:</b> {{$ctrl.studyData.Tissue_engineered_heart_valves.Material_mesh}} </p>
-			  <p class="card-text"><b>Material of mesh (abbreviation):</b> {{$ctrl.studyData.Tissue_engineered_heart_valves.Material_mesh_abbreviation}} </p>
-			  <p class="card-text"><b>Material thickness:</b> {{$ctrl.studyData.Tissue_engineered_heart_valves.Material_thickness}} </p>
-			  <p class="card-text"><b>Material coating:</b> {{$ctrl.studyData.Tissue_engineered_heart_valves.Material_coating}} </p>
-			  <p class="card-text"><b>Material coating (abbreviation):</b> {{$ctrl.studyData.Tissue_engineered_heart_valves.Material_coating_abbreviation}} </p>
-			  <p class="card-text"><b>Molecular weight material coating:</b> {{$ctrl.studyData.Tissue_engineered_heart_valves.Material_coating_molecular_weight}} </p>
-			  <p class="card-text"><b>Manufacturer material coating:</b> {{$ctrl.studyData.Tissue_engineered_heart_valves.Material_coating_manufacturer}} </p>
-			  <p class="card-text" ng-if='$ctrl.studyData.Tissue_engineered_heart_valves.Stent_presence=="yes"'>
-				<h5><b> Stent information </b> </h5>
-				<table class='table_study'> 
-					<tr class='tr_study'>
-						<th class='th_study'>Key</th>
-						<th class='th_study'>Value</th>
-					</tr>
-					<tr class='tr_study' ng-repeat="(key,value) in $ctrl.studyData.Tissue_engineered_heart_valves.Stent_information">
-						<td class='td_study'>{{key}}</td>
-						<td class='td_study'>{{value}}</td>
-					</tr>
-				</table>
-			  </p>
-
-			</div>
-        </div>
-
-		<!-- Implantation method -->
-		<div class="row" style="background-color:smokewhite;" >
-              <div class="card-body" style='border:solid;border-width:0.5px;'>
-              <h5 class="card-title"> <b>Implantation information</b> </h5>
-              <p class="card-text"><b>Implantation method:</b> {{$ctrl.studyData.Implantation.Implantation_method}} </p>
-			  <p class='card-text'><b>Implantation procedure: </b>{{$ctrl.studyData.Implantation.Implantation_method_procedure}} </p>
-			  <p class='card-text'><b>Implantation location: </b>{{$ctrl.studyData.Implantation.Implantation_location}} </p>
-			  <p class='card-text'><b>Scaffold: </b> {{$ctrl.studyData.Implantation.Scaffold}}</p>
-			  <p class='card-text'><b>Stent present: </b> {{$ctrl.studyData.Implantation.Stent_present}}</p>
-			  <p class='card-text'><b>Stent type: </b> {{$ctrl.studyData.Implantation.Stent_type}}</p>
-			  <p class='card-text'><b>Scaffold design class (old/new): </b> {{$ctrl.studyData.Implantation.Scaffold_design_class}}</p>
-
-			</div>
+					  <h5 class="card-title"> <b>Tissue Engineered Heart valves information</b> </h5>
+					  <p class="card-text"><b>Number of samples:</b> {{$ctrl.studyData.Tissue_engineered_heart_valves.Number_of_samples}} </p>
+					  <p class="card-text"><b>Material of mesh:</b> {{$ctrl.studyData.Tissue_engineered_heart_valves.Material_mesh}} </p>
+					  <p class="card-text"><b>Material of mesh (abbreviation):</b> {{$ctrl.studyData.Tissue_engineered_heart_valves.Material_mesh_abbreviation}} </p>
+					  <p class="card-text"><b>Material thickness:</b> {{$ctrl.studyData.Tissue_engineered_heart_valves.Material_thickness}} </p>
+					  <p class="card-text"><b>Material coating:</b> {{$ctrl.studyData.Tissue_engineered_heart_valves.Material_coating}} </p>
+					  <p class="card-text"><b>Material coating (abbreviation):</b> {{$ctrl.studyData.Tissue_engineered_heart_valves.Material_coating_abbreviation}} </p>
+					  <p class="card-text"><b>Molecular weight material coating:</b> {{$ctrl.studyData.Tissue_engineered_heart_valves.Material_coating_molecular_weight}} </p>
+					  <p class="card-text"><b>Manufacturer material coating:</b> {{$ctrl.studyData.Tissue_engineered_heart_valves.Material_coating_manufacturer}} </p>
+					  <p class="card-text" ng-if='$ctrl.studyData.Tissue_engineered_heart_valves.Stent_presence=="yes"'>
+						<h5><b> Stent information </b> </h5>
+						<table class='table_study'> 
+							<tr class='tr_study'>
+								<th class='th_study'>Key</th>
+								<th class='th_study'>Value</th>
+							</tr>
+							<tr class='tr_study' ng-repeat="(key,value) in $ctrl.studyData.Tissue_engineered_heart_valves.Stent_information">
+								<td class='td_study'>{{key}}</td>
+								<td class='td_study'>{{value}}</td>
+							</tr>
+						</table>
+					  </p>
+			 </div>
+           </div>
+		   <div class='col-sm-6'>
+				<!-- Implantation method -->
+				<div class="row" style="background-color:smokewhite;" >
+					  <div class="card-body" style='border:solid;border-width:0.5px;'>
+					  <h5 class="card-title"> <b>Implantation information</b> </h5>
+					  <p class="card-text"><b>Implantation method:</b> {{$ctrl.studyData.Implantation.Implantation_method}} </p>
+					  <p class='card-text'><b>Implantation procedure: </b>{{$ctrl.studyData.Implantation.Implantation_method_procedure}} </p>
+					  <p class='card-text'><b>Implantation location: </b>{{$ctrl.studyData.Implantation.Implantation_location}} </p>
+					  <p class='card-text'><b>Scaffold: </b> {{$ctrl.studyData.Implantation.Scaffold}}</p>
+					  <p class='card-text'><b>Stent present: </b> {{$ctrl.studyData.Implantation.Stent_present}}</p>
+					  <p class='card-text'><b>Stent type: </b> {{$ctrl.studyData.Implantation.Stent_type}}</p>
+					  <p class='card-text'><b>Scaffold design class (old/new): </b> {{$ctrl.studyData.Implantation.Scaffold_design_class}}</p>
+				</div>
+		   </div>
         </div>
 
 
