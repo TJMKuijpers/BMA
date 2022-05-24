@@ -53,8 +53,22 @@
 		<!-- Experimental information -->
 			<!-- Note: the object Experiments contains TopoChip fields, so we should remove those -->
 		
+		<!-- Results -->
+		<div class="row">
+			<div class="card-study-overview">
+				<div class="card-body">
+				<h5 class="card-title"> <b>Selected surfaces</b> </h5>
+					<div>
+						<div class="col-sm-3" ng-repeat="image in $ctrl.studyData.Experiment.Surface_validation.Selected_surfaces_feature_id track by $index">
+							<figcaption>{{$ctrl.studyData.Experiment.Surface_validation.Selected_surfaces_feature_id[$index]}}</figcaption>
+							<img width="200px" heigth="200px" src="images/Surface_FeatureIdx_{{$ctrl.studyData.Experiment.Surface_validation.Selected_surfaces_feature_id[$index]}}.png">
+						</div>
+					</div>
+				</div>
+			 </div>
+		  </div>
 	</div>
-	
+
 	<div ng-if="$ctrl.studyType =='Heartvalve study'">
 		<!-- Heart valve information -->
 			<div class="row" style="background-color:smokewhite;" >
