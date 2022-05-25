@@ -124,6 +124,38 @@
 					  <p class='card-text'><b>Stent type: </b> {{$ctrl.studyData.Implantation.Stent_type}}</p>
 					  <p class='card-text'><b>Scaffold design class (old/new): </b> {{$ctrl.studyData.Implantation.Scaffold_design_class}}</p>
 				</div>
+				<div class="row">
+					<div class="card-study-overview">
+						<div class="card-body">
+							<h5 class="card-title"> <b>Decellularization</b> </h5>
+							<p class="card-text"><b>TEHV decellularized:</b>{{$ctrl.studyData.Decellulariation.Decellularized_tehv}}</p>
+							<p class="card-text"><b>Decellularization solution: </b>{{$ctrl.studyData.Decellularization.Decellularization_solution}}</p>
+							<p class="card-text"><b>Nucleic removal solution: </b>{{$ctrl.studyData.Decellularization.Nucleic_removal_solution}}</p>
+							<p class='card-text'><b>Nucleic removal solution supplement: </b>{{$ctrl.studyData.Decellularization.Nucleic_removal_solution_supplement}}</p>
+						<div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="card-study-overview">
+						<div class='card-body'>
+							<h5 class="card-title">Cells seeded on implants </h5>
+							<p class="card-text"><b>Cells seeded: </b>{{$ctrl.studyData.Tissue_engineered_heart_valves.Cell_seeded}}</p>
+							<p class="card-text"><b>Cell type: </b>{{$ctrl.studyData.Tissue_engineered_heart_valves.Cell_seeding_info.Cell_type}}</p>
+							<p class="card-text"><b>Organism: </b>{{$ctrl.studyData.Tissue_engineered_heart_valves.Cell_seeding_info.Organism}}</p>
+							<p class="card-text"><b>Cell passage: </b>{{$ctrl.studyData.Tissue_engineered_heart_valves.Cell_seeding_info.Cell_passage}}</p>
+							<p class="card-text"><b>Seeding density: </b>{{$ctrl.studyData.Tissue_engineered_heart_valves.Cell_seeding_info.Seeding_density}}{{$ctrl.studyData.Tissue_engineered_heart_valves.Cell_seeding_info.Seeding_density_unit}}</p>
+							<p class='card-text'><b>Cell seeding carrier: </b>{{$ctrl.studyData.Tissue_engineered_heart_valves.Cell_seeding_info.Cell_Seeding_Carrier}}
+						</div>
+					</div>
+				</div>
+		   </div>
+		   <div class="row">
+				<div class="col-sm-6">
+				</div>
+				<div class="col-sm-6">
+				</div>
+		   
+		   
 		   </div>
         </div>
 
