@@ -73,8 +73,7 @@
 		<!-- Heart valve information -->
 			<div class="row" style="background-color:smokewhite;" >
               <div class="card-body" style='border:solid;border-width:0.5px;'>
-              <h5 class="card-title"> <b>Title: </b> {{$ctrl.studyData.Name}} </h5>
-              <p class="card-text"><b>Description:</b> {{$ctrl.studyData.Description}} </p>
+              <h5 class="card-title"> <b>Title: </b> {{$ctrl.studyData.Title}} </h5>
 			  <p class='card-text'><b>Lead author: </b>{{$ctrl.studyData.Lead_author}} </p>
 			  <p class='card-text'><b>Principal investigator: </b>{{$ctrl.studyData.Lead_principal_investigator}} </p>
 			  <p class='card-text'><b>DOI: </b> <a=href='{{$ctrl.studyData.DOI}}'>{{$ctrl.studyData.DOI}}</a></p>
@@ -149,14 +148,19 @@
 					</div>
 				</div>
 		   </div>
+		   </div>
 		   <div class="row">
 				<div class="col-sm-6">
+					<div class="card-study-overview">
+						<h5 class="card-text">Images heart valve design</h5>
+						<image src="/images/{{$ctrl.studyData.Images[$index]}}.png" alt-text="heart valve design" />
+						<figcaption> {{$ctrl.studyData.Images[$index]}} </figcaption>
+					</div>
 				</div>
 				<div class="col-sm-6">
 				</div>
 		   
 		   
-		   </div>
         </div>
 
 
