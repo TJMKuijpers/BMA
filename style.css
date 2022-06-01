@@ -372,3 +372,6 @@ vertical-align: middle;
   }
 
 
+  #dataContent{
+    overflow-y: scroll;
+  }
