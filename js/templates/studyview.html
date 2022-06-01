@@ -85,30 +85,57 @@
 		<!-- Tissue Engineered heart valves -->
 		<div class="row" style="background-color:smokewhite;" >
 		   <div class='col-sm-6'>
-              <div class="card-body" style='border:solid;border-width:0.5px;'>
-					  <h5 class="card-title"> <b>Tissue Engineered Heart valves information</b> </h5>
-					  <p class="card-text"><b>Number of samples:</b> {{$ctrl.studyData.Tissue_engineered_heart_valves.Number_of_samples}} </p>
-					  <p class="card-text"><b>Material of mesh:</b> {{$ctrl.studyData.Tissue_engineered_heart_valves.Material_mesh}} </p>
-					  <p class="card-text"><b>Material of mesh (abbreviation):</b> {{$ctrl.studyData.Tissue_engineered_heart_valves.Material_mesh_abbreviation}} </p>
-					  <p class="card-text"><b>Material thickness:</b> {{$ctrl.studyData.Tissue_engineered_heart_valves.Material_thickness}} </p>
-					  <p class="card-text"><b>Material coating:</b> {{$ctrl.studyData.Tissue_engineered_heart_valves.Material_coating}} </p>
-					  <p class="card-text"><b>Material coating (abbreviation):</b> {{$ctrl.studyData.Tissue_engineered_heart_valves.Material_coating_abbreviation}} </p>
-					  <p class="card-text"><b>Molecular weight material coating:</b> {{$ctrl.studyData.Tissue_engineered_heart_valves.Material_coating_molecular_weight}} </p>
-					  <p class="card-text"><b>Manufacturer material coating:</b> {{$ctrl.studyData.Tissue_engineered_heart_valves.Material_coating_manufacturer}} </p>
-					  <p class="card-text" ng-if='$ctrl.studyData.Tissue_engineered_heart_valves.Stent_presence=="yes"'>
-						<h5><b> Stent information </b> </h5>
-						<table class='table_study'> 
-							<tr class='tr_study'>
-								<th class='th_study'>Key</th>
-								<th class='th_study'>Value</th>
-							</tr>
-							<tr class='tr_study' ng-repeat="(key,value) in $ctrl.studyData.Tissue_engineered_heart_valves.Stent_information">
-								<td class='td_study'>{{key}}</td>
-								<td class='td_study'>{{value}}</td>
-							</tr>
-						</table>
-					  </p>
-			 </div>
+				<div class='row'>
+					<div class="card-body" style='border:solid;border-width:0.5px;'>
+						  <h5 class="card-title"> <b>Tissue Engineered Heart valves information</b> </h5>
+						  <p class="card-text"><b>Number of samples:</b> {{$ctrl.studyData.Tissue_engineered_heart_valves.Number_of_samples}} </p>
+						  <p class="card-text"><b>Material of mesh:</b> {{$ctrl.studyData.Tissue_engineered_heart_valves.Material_mesh}} </p>
+						  <p class="card-text"><b>Material of mesh (abbreviation):</b> {{$ctrl.studyData.Tissue_engineered_heart_valves.Material_mesh_abbreviation}} </p>
+						  <p class="card-text"><b>Material thickness:</b> {{$ctrl.studyData.Tissue_engineered_heart_valves.Material_thickness}} </p>
+						  <p class="card-text"><b>Material coating:</b> {{$ctrl.studyData.Tissue_engineered_heart_valves.Material_coating}} </p>
+						  <p class="card-text"><b>Material coating (abbreviation):</b> {{$ctrl.studyData.Tissue_engineered_heart_valves.Material_coating_abbreviation}} </p>
+						  <p class="card-text"><b>Molecular weight material coating:</b> {{$ctrl.studyData.Tissue_engineered_heart_valves.Material_coating_molecular_weight}} </p>
+						  <p class="card-text"><b>Manufacturer material coating:</b> {{$ctrl.studyData.Tissue_engineered_heart_valves.Material_coating_manufacturer}} </p>
+						  <p class="card-text" ng-if='$ctrl.studyData.Tissue_engineered_heart_valves.Stent_presence=="yes"'>
+							<h5><b> Stent information </b> </h5>
+							<table class='table_study'> 
+								<tr class='tr_study'>
+									<th class='th_study'>Key</th>
+									<th class='th_study'>Value</th>
+								</tr>
+								<tr class='tr_study' ng-repeat="(key,value) in $ctrl.studyData.Tissue_engineered_heart_valves.Stent_information">
+									<td class='td_study'>{{key}}</td>
+									<td class='td_study'>{{value}}</td>
+								</tr>
+							</table>
+						  </p>
+					</div>
+				</div>
+	
+			 	<div class='row'>
+					<div class="card-study-overview">
+						<div class="card-body">
+							<h5 class="card-text">Images heart valve design</h5>
+							<div class="col-sm-3" ng-repeat="image in $ctrl.studyData.Images.heart_valve_design track by $index">
+								<image src="/images/{{$ctrl.studyData.Images.heart_valve_design[$index]}}" alt-text="heart valve design" />
+								<figcaption> {{$ctrl.studyData.Images.heart_valve_design[$index]}} </figcaption>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class='row'>
+						<div class="card-study-overview">
+							<div class="card-body">
+							<h5 class="card-text">Images heart valve design</h5>
+							<div class="col-sm-3" ng-repeat="image in $ctrl.studyData.Images.explant_evaluation track by $index">
+								<image src="/images/{{$ctrl.studyData.Images.explant_evaluation[$index]}}" alt-text="heart valve design" />
+								<figcaption> {{$ctrl.studyData.Images.explant_evaluation[$index]}} </figcaption>
+							</div>
+							</div>
+						</div>
+				</div>
+				
+
            </div>
 		   <div class='col-sm-6'>
 				<!-- Implantation method -->
@@ -149,19 +176,7 @@
 				</div>
 		   </div>
 		   </div>
-		   <div class="row">
-				<div class="col-sm-6">
-					<div class="card-study-overview">
-						<h5 class="card-text">Images heart valve design</h5>
-						<image src="/images/{{$ctrl.studyData.Images[$index]}}.png" alt-text="heart valve design" />
-						<figcaption> {{$ctrl.studyData.Images[$index]}} </figcaption>
-					</div>
-				</div>
-				<div class="col-sm-6">
-				</div>
-		   
-		   
-        </div>
+
 
 
 	</div
