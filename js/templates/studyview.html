@@ -117,7 +117,7 @@
 						<div class="card-body">
 							<h5 class="card-text">Images heart valve design</h5>
 							<div class="col-sm-3" ng-repeat="image in $ctrl.studyData.Images.heart_valve_design track by $index">
-								<image src="/images/{{$ctrl.studyData.Images.heart_valve_design[$index]}}" alt-text="heart valve design" />
+								<image width=150 heigth=150 src="/images/{{$ctrl.studyData.Images.heart_valve_design[$index]}}" alt-text="heart valve design" />
 								<figcaption> {{$ctrl.studyData.Images.heart_valve_design[$index]}} </figcaption>
 							</div>
 						</div>
@@ -127,8 +127,8 @@
 						<div class="card-study-overview">
 							<div class="card-body">
 							<h5 class="card-text">Images heart valve design</h5>
-							<div class="col-sm-3" ng-repeat="image in $ctrl.studyData.Images.explant_evaluation track by $index">
-								<image src="/images/{{$ctrl.studyData.Images.explant_evaluation[$index]}}" alt-text="heart valve design" />
+							<div class="row-sm-3" ng-repeat="image in $ctrl.studyData.Images.explant_evaluation track by $index">
+								<image width=150 heigth=150 src="/images/{{$ctrl.studyData.Images.explant_evaluation[$index]}}" alt-text="heart valve design" />
 								<figcaption> {{$ctrl.studyData.Images.explant_evaluation[$index]}} </figcaption>
 							</div>
 							</div>
