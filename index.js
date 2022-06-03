@@ -1,4 +1,4 @@
-var myApp = angular.module('biomaterialatlas', ['ui.router']);
+var myApp = angular.module('biomaterialatlas', ['ui.router','ui.bootstrap']);
 
 myApp.config(function($stateProvider) {
   var homeState = {
