@@ -45,32 +45,34 @@
 
 		<!-- Cell culture information -->
 			<div class='col-sm-6'>
-              <div class="card-study-overview">
-				<h5 class="card-title-study"> <b>Cell Culture information</b> </h5>
-				<p class="card-text"><b>Cell type:</b> {{$ctrl.studyData.Cell_culture.Cell_type}} </p>
-				<p class='card-text'><b>Design type: </b>{{$ctrl.studyData.Cell_culture.Passage_number}} </p>
-				<p > Medium conditions: {{$ctrl.studyData.Cell_culture.Culture_medium}} </p>
-			  </div>
-			</div>
-        </div>
-
-		<!-- Experimental information -->
-			<!-- Note: the object Experiments contains TopoChip fields, so we should remove those -->
-		
-		<!-- Results -->
-		<div class="row">
-			<div class="card-study-overview">
-				<div class="card-body">
-				<h5 class="card-title-study"> <b>Selected surfaces</b> </h5>
-					<div>
-						<div class="col-sm-3" ng-repeat="image in $ctrl.studyData.Experiment.Surface_validation.Selected_surfaces_feature_id track by $index">
-							<figcaption>{{$ctrl.studyData.Experiment.Surface_validation.Selected_surfaces_feature_id[$index]}}</figcaption>
-							<img width="200px" heigth="200px" src="images/Surface_FeatureIdx_{{$ctrl.studyData.Experiment.Surface_validation.Selected_surfaces_feature_id[$index]}}.png">
-						</div>
+					<div class="row" width="100%">
+					  <div class="card-study-overview">
+						<h5 class="card-title-study"> <b>Cell Culture information</b> </h5>
+						<p class="card-text"><b>Cell type:</b> {{$ctrl.studyData.Cell_culture.Cell_type}} </p>
+						<p class='card-text'><b>Design type: </b>{{$ctrl.studyData.Cell_culture.Passage_number}} </p>
+						<p > Medium conditions: {{$ctrl.studyData.Cell_culture.Culture_medium}} </p>
+					  </div>
 					</div>
-				</div>
-			 </div>
-		  </div>
+				 <div class="row" >
+			 		<!-- Results -->
+					<div class="card-study-overview" style="width:100%">
+						<div class="card-body">
+						<h5 class="card-title-study"> <b>Selected surfaces</b> </h5>
+								<div style="height: 500px">
+									<div uib-carousel id="ïmageDesings" active="active" interval="0" no-wrap="noWrapSlides">
+										<div uib-slide ng-repeat="image in $ctrl.studyData.Experiment.Surface_validation.Selected_surfaces_feature_id track by $index" index="$index">
+											<img width="400px" heigth="400px" ng-src="/images/Surface_FeatureIdx_{{image}}.png" style="margin:auto;">
+											<p>{{image}}</p>
+										 </div>
+									</div>
+								</div>
+						<div>
+					</div>
+				 </div>
+			</div>
+       </div>
+	</div>
+		
 	</div>
 
 	<div ng-if="$ctrl.studyType =='Heart valve study'">
@@ -117,41 +119,35 @@
 				</div>
 	
 			 	<div class='row'>
-					<div class="card-study-overview">
+					<div class="card-study-overview" ngif='$ctrl.studyData.Images.heart_valve_design.length>0' ng-clock>
 						<div class="card-body">
 							<h5 class="card-title-study">Images heart valve design</h5>
-							<!--
-							<div class="col-sm-3" ng-repeat="image in $ctrl.studyData.Images.heart_valve_design track by $index">
-								<image width=150 heigth=150 src="/images/{{$ctrl.studyData.Images.heart_valve_design[$index]}}" alt-text="heart valve design" />
-								<figcaption> {{$ctrl.studyData.Images.heart_valve_design[$index]}} </figcaption>
+							<div style="height: 300px">
+								 <div uib-carousel id="ïmageDesings" active="active" interval="0" no-wrap="noWrapSlides">
+									<div uib-slide ng-repeat="image in $ctrl.studyData.Images.heart_valve_design track by $index" index="$index">
+										<img ng-src="/images/{{image}}" style="margin:auto;">
+									 </div>
+								</div>
 							</div>
-							-->
-							    <carousel carousel-controls interval="5000">
-								    <slide ng-repeat="image in $ctrl.studyData.Images.heart_valve_design track by $index" >
-										<img ng-src="/images/{{$ctrl.studyData.Images.heart_valve_design[$index]}}">
-										<div class="carousel-caption">
-											<p>{{$ctrl.studyData.Images.heart_valve_design[$index]}} </p>
-										</div>
-									</slide>
-								</carousel>
 						</div>
 					</div>
+				</div>
 				
-					
-					</div>
 				<div class='row'>
 						<div class="card-study-overview">
 							<div class="card-body">
-							<h5 class="card-title-study">Images heart valve design</h5>
-							<div class="row-sm-3" ng-repeat="image in $ctrl.studyData.Images.explant_evaluation track by $index">
-								<image width=150 heigth=150 src="/images/{{$ctrl.studyData.Images.explant_evaluation[$index]}}" alt-text="heart valve design" />
-								<figcaption> {{$ctrl.studyData.Images.explant_evaluation[$index]}} </figcaption>
-							</div>
+							<h5 class="card-title-study">Images of explants</h5>
+							<div style="height: 200px">
+								 <div uib-carousel id="ImageExplant" active="active" interval="0" no-wrap="noWrapSlides">
+									<div uib-slide ng-repeat="image in $ctrl.studyData.Images.explant_evaluation track by $index" index="$index">
+										<img ng-src="/images/{{image}}" style="margin:auto;">
+									 </div>
+								</div>
 							</div>
 						</div>
 				</div>
 				
-
+			</div>
            </div>
 		   <div class='col-sm-6'>
 				<!-- Implantation method -->
