@@ -1,4 +1,4 @@
-<div style='margin:2em;'>
+<div class='container' style="margin:2em;background-color:white;width:97%">
 	<div class='row'>
 	  <p class="card-text"><a ui-sref="repo">Go back to overview</a></p>
 	</div>
@@ -7,25 +7,28 @@
 		<!-- We use a fixed template and can use cards which expect this template -->
 		<div ng-if="$ctrl.studyType =='TopoChip screen'">
 		<!-- Template for Study design -->
-		<div class="row" style="background-color:smokewhite;" >
+		<div class="row" style="background-color:smokewhite;" style='padding-left:10px' >
+		  
 			<div class="card-study-overview">
-              <div class="card-body">
-              <h5 class="card-title"> <b>Title: </b> {{$ctrl.studyData.Name}} </h5>
-              <p class="card-text"><b>Description:</b> {{$ctrl.studyData.Description}} </p>
-			  <p class='card-text'><b>Lead author: </b>{{$ctrl.studyData.Lead_author}} </p>
-			  <p class='card-text'><b>Principal investigator: </b>{{$ctrl.studyData.Principal_investigator}} </p>
-			  <p class='card-text'><b>DOI: </b> <a=href='{{$ctrl.studyData.DOI}}'>{{$ctrl.studyData.DOI}}</a></p>
-			  <p class='card-text'><b>Date: </b> {{$ctrl.studyData.Date}}</p>
-			  <p class='card-text'><b>Summary: </b> {{$ctrl.studyData.Summary}}</p>
-			</div>
+              <h5 class="card-title-study"> Study description </h5>
+              <div class="card-body-study">
+				<p class="card-text"><b>Title: </b> {{$ctrl.studyData.Name}}</p>
+				<p class="card-text"><b>Description:</b> {{$ctrl.studyData.Description}} </p>
+				<p class='card-text'><b>Lead author: </b>{{$ctrl.studyData.Lead_author}} </p>
+				<p class='card-text'><b>Principal investigator: </b>{{$ctrl.studyData.Principal_investigator}} </p>
+				<p class='card-text'><b>DOI: </b> <a=href='{{$ctrl.studyData.DOI}}'>{{$ctrl.studyData.DOI}}</a></p>
+				<p class='card-text'><b>Date: </b> {{$ctrl.studyData.Date}}</p>
+				<p class='card-text'><b>Summary: </b> {{$ctrl.studyData.Summary}}</p>
+			   </div>
 			</div>
         </div>	
 
 		<!-- TopoChip information -->
-		<div class="row" style="background-color:smokewhite;">
+		<div class="row">
 			<div class='col-sm-6'>
-				 <div class="card-body" style='border:solid;border-width:0.5px;'>
-				  <h5 class="card-title"> <b>TopoChip screen information</b> </h5>
+				<div class="card-study-overview">
+				<h5 class="card-title-study"> <b>TopoChip screen information</b> </h5>
+				 <div class="card-body-study">
 				  <p class="card-text"><b>Description:</b> {{$ctrl.studyData.Experiment.TopoChip_screen.Description}} </p>
 				  <p class='card-text'><b>Design type: </b>{{$ctrl.studyData.Experiment.TopoChip_screen.Design_type}} </p>
 				  <p class='card-text'><b>Feature scale: </b>{{$ctrl.studyData.Experiment.TopoChip_screen.Feature_scale}} </p>
@@ -36,16 +39,17 @@
 				  <p class='card-text'><b>Number of chips: </b> {{$ctrl.studyData.Experiment.TopoChip_screen.Number_of_chips}}</p>
 				  <p class='card-text'><b>Summary: </b> {{$ctrl.studyData.Experiment.TopoChip_screen.Summary}}</p>
 				</div>
+			   </div>
 			</div>
     
 
 		<!-- Cell culture information -->
 			<div class='col-sm-6'>
-              <div class="card-body" style='border:solid;border-width:0.5px;'>
-				<h5 class="card-title"> <b>Cell Culture information</b> </h5>
+              <div class="card-study-overview">
+				<h5 class="card-title-study"> <b>Cell Culture information</b> </h5>
 				<p class="card-text"><b>Cell type:</b> {{$ctrl.studyData.Cell_culture.Cell_type}} </p>
 				<p class='card-text'><b>Design type: </b>{{$ctrl.studyData.Cell_culture.Passage_number}} </p>
-				<p class='card-text'><b>Feature scale: </b>{{$ctrl.studyData.Cell_culture.Culture_medium}} </p>
+				<p > Medium conditions: {{$ctrl.studyData.Cell_culture.Culture_medium}} </p>
 			  </div>
 			</div>
         </div>
@@ -57,7 +61,7 @@
 		<div class="row">
 			<div class="card-study-overview">
 				<div class="card-body">
-				<h5 class="card-title"> <b>Selected surfaces</b> </h5>
+				<h5 class="card-title-study"> <b>Selected surfaces</b> </h5>
 					<div>
 						<div class="col-sm-3" ng-repeat="image in $ctrl.studyData.Experiment.Surface_validation.Selected_surfaces_feature_id track by $index">
 							<figcaption>{{$ctrl.studyData.Experiment.Surface_validation.Selected_surfaces_feature_id[$index]}}</figcaption>
@@ -69,11 +73,11 @@
 		  </div>
 	</div>
 
-	<div ng-if="$ctrl.studyType =='Heartvalve study'">
+	<div ng-if="$ctrl.studyType =='Heart valve study'">
 		<!-- Heart valve information -->
 			<div class="row" style="background-color:smokewhite;" >
               <div class="card-body" style='border:solid;border-width:0.5px;'>
-              <h5 class="card-title"> <b>Title: </b> {{$ctrl.studyData.Title}} </h5>
+              <h5 class="card-title-study"> <b>Title: </b> {{$ctrl.studyData.Title}} </h5>
 			  <p class='card-text'><b>Lead author: </b>{{$ctrl.studyData.Lead_author}} </p>
 			  <p class='card-text'><b>Principal investigator: </b>{{$ctrl.studyData.Lead_principal_investigator}} </p>
 			  <p class='card-text'><b>DOI: </b> <a=href='{{$ctrl.studyData.DOI}}'>{{$ctrl.studyData.DOI}}</a></p>
@@ -87,7 +91,7 @@
 		   <div class='col-sm-6'>
 				<div class='row'>
 					<div class="card-body" style='border:solid;border-width:0.5px;'>
-						  <h5 class="card-title"> <b>Tissue Engineered Heart valves information</b> </h5>
+						  <h5 class="card-title-study"> <b>Tissue Engineered Heart valves information</b> </h5>
 						  <p class="card-text"><b>Number of samples:</b> {{$ctrl.studyData.Tissue_engineered_heart_valves.Number_of_samples}} </p>
 						  <p class="card-text"><b>Material of mesh:</b> {{$ctrl.studyData.Tissue_engineered_heart_valves.Material_mesh}} </p>
 						  <p class="card-text"><b>Material of mesh (abbreviation):</b> {{$ctrl.studyData.Tissue_engineered_heart_valves.Material_mesh_abbreviation}} </p>
@@ -115,18 +119,30 @@
 			 	<div class='row'>
 					<div class="card-study-overview">
 						<div class="card-body">
-							<h5 class="card-text">Images heart valve design</h5>
+							<h5 class="card-title-study">Images heart valve design</h5>
+							<!--
 							<div class="col-sm-3" ng-repeat="image in $ctrl.studyData.Images.heart_valve_design track by $index">
 								<image width=150 heigth=150 src="/images/{{$ctrl.studyData.Images.heart_valve_design[$index]}}" alt-text="heart valve design" />
 								<figcaption> {{$ctrl.studyData.Images.heart_valve_design[$index]}} </figcaption>
 							</div>
+							-->
+							    <carousel carousel-controls interval="5000">
+								    <slide ng-repeat="image in $ctrl.studyData.Images.heart_valve_design track by $index" >
+										<img ng-src="/images/{{$ctrl.studyData.Images.heart_valve_design[$index]}}">
+										<div class="carousel-caption">
+											<p>{{$ctrl.studyData.Images.heart_valve_design[$index]}} </p>
+										</div>
+									</slide>
+								</carousel>
 						</div>
 					</div>
-				</div>
+				
+					
+					</div>
 				<div class='row'>
 						<div class="card-study-overview">
 							<div class="card-body">
-							<h5 class="card-text">Images heart valve design</h5>
+							<h5 class="card-title-study">Images heart valve design</h5>
 							<div class="row-sm-3" ng-repeat="image in $ctrl.studyData.Images.explant_evaluation track by $index">
 								<image width=150 heigth=150 src="/images/{{$ctrl.studyData.Images.explant_evaluation[$index]}}" alt-text="heart valve design" />
 								<figcaption> {{$ctrl.studyData.Images.explant_evaluation[$index]}} </figcaption>
@@ -141,7 +157,7 @@
 				<!-- Implantation method -->
 				<div class="row" style="background-color:smokewhite;" >
 					  <div class="card-body" style='border:solid;border-width:0.5px;'>
-					  <h5 class="card-title"> <b>Implantation information</b> </h5>
+					  <h5 class="card-title-study"> <b>Implantation information</b> </h5>
 					  <p class="card-text"><b>Implantation method:</b> {{$ctrl.studyData.Implantation.Implantation_method}} </p>
 					  <p class='card-text'><b>Implantation procedure: </b>{{$ctrl.studyData.Implantation.Implantation_method_procedure}} </p>
 					  <p class='card-text'><b>Implantation location: </b>{{$ctrl.studyData.Implantation.Implantation_location}} </p>
@@ -153,7 +169,7 @@
 				<div class="row">
 					<div class="card-study-overview">
 						<div class="card-body">
-							<h5 class="card-title"> <b>Decellularization</b> </h5>
+							<h5 class="card-title-study"> <b>Decellularization</b> </h5>
 							<p class="card-text"><b>TEHV decellularized:</b>{{$ctrl.studyData.Decellulariation.Decellularized_tehv}}</p>
 							<p class="card-text"><b>Decellularization solution: </b>{{$ctrl.studyData.Decellularization.Decellularization_solution}}</p>
 							<p class="card-text"><b>Nucleic removal solution: </b>{{$ctrl.studyData.Decellularization.Nucleic_removal_solution}}</p>
@@ -164,7 +180,7 @@
 				<div class="row">
 					<div class="card-study-overview">
 						<div class='card-body'>
-							<h5 class="card-title">Cells seeded on implants </h5>
+							<h5 class="card-title-study">Cells seeded on implants </h5>
 							<p class="card-text"><b>Cells seeded: </b>{{$ctrl.studyData.Tissue_engineered_heart_valves.Cell_seeded}}</p>
 							<p class="card-text"><b>Cell type: </b>{{$ctrl.studyData.Tissue_engineered_heart_valves.Cell_seeding_info.Cell_type}}</p>
 							<p class="card-text"><b>Organism: </b>{{$ctrl.studyData.Tissue_engineered_heart_valves.Cell_seeding_info.Organism}}</p>
