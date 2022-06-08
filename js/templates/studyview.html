@@ -18,7 +18,7 @@
 				<p class='card-text'><b>Principal investigator: </b>{{$ctrl.studyData.Principal_investigator}} </p>
 				<p class='card-text'><b>DOI: </b> <a=href='{{$ctrl.studyData.DOI}}'>{{$ctrl.studyData.DOI}}</a></p>
 				<p class='card-text'><b>Date: </b> {{$ctrl.studyData.Date}}</p>
-				<p class='card-text'><b>Summary: </b> {{$ctrl.studyData.Summary}}</p>
+				<p class='card-text'><b>Research question: </b> {{$ctrl.studyData.Summary}}</p>
 			   </div>
 			</div>
         </div>	
@@ -38,14 +38,14 @@
 						  <p class='card-text'><b>Surface treatment: </b> {{$ctrl.studyData.Experiment.TopoChip_screen.Surface_treatment}}</p>
 						  <p class='card-text'><b>Coating: </b> {{$ctrl.studyData.Experiment.TopoChip_screen.Coating}}</p>
 						  <p class='card-text'><b>Number of chips: </b> {{$ctrl.studyData.Experiment.TopoChip_screen.Number_of_chips}}</p>
-						  <p class='card-text'><b>Summary: </b> {{$ctrl.studyData.Experiment.TopoChip_screen.Summary}}</p>
+						  <p class='card-text'><b>Experimental design: </b> {{$ctrl.studyData.Experiment.TopoChip_screen.Summary}}</p>
 						</div>
 					</div>
 				</div>
 				<div class="row">
 					<div class="card-study-overview">
 						<div class="card-body">
-							<h5 class="card-title-study"> <b>Selected surfaces</b> </h5>
+							<h5 class="card-title-study"> <b>Selected surfaces for validation</b> </h5>
 							<div>
 							<div style="height: 200px">
 								<div uib-carousel id="ImageExplant" active="active" interval="0" no-wrap="noWrapSlides">
