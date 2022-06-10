@@ -34,6 +34,9 @@
                 </label>
                 </div>
         </div>
+        <div style='border:1px solid black;'>
+            <input ng-model="filter.key"/>
+        </div>
         
       <!-- To select biological properties -->
        <div style="border:1px solid black;">
@@ -64,7 +67,7 @@
     
     <div id='dataContent' ng-app="dataRepository" class="col-xs-6 col-sm-8" style="background-color:lavenderblush;">
           <div class="row" style="background-color:white;">
-            <div class="col-sm-3">
+            <div class="col-sm-12">
                 <div class="card border-dark mb-3">
                     <div class="card-block">
                         <h4 class="card-title" style="text-decoration: underline;color:'blue';">Datasets</h4>
@@ -72,36 +75,20 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-3">
-                <div class="card border-dark mb-3">
-                    <div class="card-block">
-                        <h4 class="card-title">Cell lines</h4>
-                        <p class="card-text">There are {{$ctrl.celltypecount}} cell types available in the Biomaterial Atlas</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="card border-dark mb-3">
-                    <div class="card-block">
-                        <h4 class="card-title">Publications</h4>
-                        <p class="card-text">There are {{$ctrl.publications}} datasets with a publication.</p>
-                    </div>
-                </div>
-            </div>
+      
      
         </div>
         <div >
-        <div class="row" style="background-color:white;" ng-repeat="dataEntry in dataset track by $index" ng-if="$index % 4 == 0" >
-            <div class="card-studyDescription  col-xs-8 "  ng-repeat="i in [$index, $index + 1, $index + 2, $index + 3]" 
-            ng-if="dataset[i] != null">
+        <div class="row" style="background-color:white;" ng-repeat="dataEntry in dataset | filter:{Studytype:filter.key}" >
+            <div class="card-studyDescription  col-xs-8 ">
               <div class="card-body .card-body-images">
-              <h5 id="card-title-studyDescription">{{dataset[i].Studytype}} </h5>
-              <p class="card-text"><b>Title: </b>{{dataset[i].Title}} </p>
-              <p class="card-text"><b>Project: </b>{{dataset[i].Project}} </p>
-              <p class="card-text"><b>Lead author: </b>{{dataset[i].Lead_author}} </p>
-              <p class="card-text"><b>DOI:</b>{{dataset[i].DOI}} </p>        
+              <h5 id="card-title-studyDescription">{{dataEntry.Studytype}} </h5>
+              <p class="card-text"><b>Title: </b>{{dataEntry.Title}} </p>
+              <p class="card-text"><b>Project: </b>{{dataEntry.Project}} </p>
+              <p class="card-text"><b>Lead author: </b>{{dataEntry.Lead_author}} </p>
+              <p class="card-text"><b>DOI:</b>{{dataEntry.DOI}} </p>        
               <!-- A modal showed show the study description based on study type -->
-              <p class="card-text"><a ui-sref="aboutstudy({ID:dataset[i].ID})"> Show study</a></p>
+              <p class="card-text"><a ui-sref="aboutstudy({ID:dataEntry.ID})"> Show study</a></p>
             </div>
             </div>
           </div>
