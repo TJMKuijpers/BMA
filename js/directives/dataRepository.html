@@ -53,11 +53,12 @@
 
         <!-- To query the data sets -->
         <div style="border:1px solid black;">
-             <form action="/custom-query" method="get">
-                    <textarea rows = "5" cols = "50" name = "queryValue" style="resize:none">Enter your query as {key:'value'} or {key:'value',key2:'value2'} for multiple parameter search</textarea>
-                    <input type = "submit" name="queryDB" value = "submit" />
-                    <input type='reset' value='Reload all data' action='/get-data' />
+             <form ng-submit="search()">
+               <textarea rows = "5" cols = "50" name = "queryValue" style="resize:none">Enter your query as {key:'value'} or {key:'value',key2:'value2'} for multiple parameter search</textarea>
+               <input type ="submit" name="queryDB"  />
              </form>
+             <input type='reset' value='Reload all data' ng-submit='restoreData()' />
+             
         </div>
       
       
