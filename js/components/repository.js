@@ -16,8 +16,10 @@ myApp.component('dataRepository',{
         $scope.search = function(){
             var custom_query = $scope.querytext 
             $scope.custom_query=$http.get('/custom-query',{params:{"search":custom_query}});
-            $scope.custom_query.then(function(reponse){
+            $scope.custom_query.then(function(response){
                 console.log(response.data)
+                $rootScope.datasets=response.data;
+                return $scope.dataset=response.data;
             },function(error){
             console.log('API error: ', error)
             });
