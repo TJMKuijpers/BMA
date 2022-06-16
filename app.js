@@ -39,13 +39,27 @@ app.get('/get-data',function(request,response,next){
 }); 
 
 
-app.get('/custom-query',function(request,reponse,next){
+app.get('/custom-query',function(request,response,next){
   // this one will be used to launch a custom query and get the results
   var query_text=request.query.search;
   // remove the quotation marks 
-  query_text=query_text.replace(/['"]+/g, '')
+  query_text=query_text.replace(/[""]+/g, '')
+  console.log(query_text)
   console.log(typeof query_text)
+  MongoClient.connect(url, { useNewUrlParser: true }, (error, client) => {
+    if (error) {
+      return console.log("Connection failed");
+    }
+    // if no error exists we can ask for the data
+    var cursor = client.db(databaseName).collection('bma').find({ID:'hv001'}).toArray().then(
+    function(obj2){
+      client.close()
+      // send the object to the frontend
+      console.log(obj2)
+      return response.send(obj2);
+      });   
   
+  }) 
 })
 
 
