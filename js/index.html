@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script  src="/lib/angularjs/angular.js"></script>
+    <script src="/lib/angularjs//angular-ui-router.js"></script>
+    <script src="/lib/ui-angular/ui-bootstrap-2.5.0.js"></script>
+    <script src="lib/jquery/jquery-3.6.0-min.js"></script>
+    <script src="/lib/bootstrap/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/lib/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <script src="index.js"></script>
+    <style>.active { color: white; font-weight: bold; }</style>
+  </head>
+
+  <body ng-app="biomaterialatlas">
+    <div class="container-fluid-top" id="'TopBarAtlas">
+        <div class="ods-box" ng-init="tabselector = 'Home'">
+            <div class='tabs'>
+                <a ui-sref="home" ui-sref-active="active" style="color:white">Home</a>
+                <a ui-sref="repo" ui-sref-active="active" style="color:white">Data repository</a>
+                <a ui-sref="about" ui-sref-active="active" style="color:white">About</a>
+            </div>
+        </div>
+    </div>
+    <ui-view></ui-view>
+    
+    <script src="/js/components/repository.js"></script>
+    <script src="/js/components/studyview.js"></script>
+
+    </body>
+</html>
