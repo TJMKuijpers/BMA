@@ -5,27 +5,21 @@
     <div class="col-xs-6 col-sm-3" style="background-color:lavender;">
         <h3>Navigation panel</h3>
         <div style="border:1px solid black;">
-            <h5 style="font-weight:bold">Search on study characteristics</h5>
-            <div>
-                <label style="font-weight:normal"> Search on study type </label>   
-                <input ng-model="filter.key"/>
-            </div>
-            <div>
-                <label style='font-weight:normal'>Search on cell line </label>
-                <input ng-model="filter2.key"/>
-            </div>
-          
+            <h5 style="font-weight:bold">Study type to include:</h5>
+            <form>
+                <input type="radio" name="generic" ng-model="studyFilter" value="!showallstudies" checked>
+                <label> All studies</label> <br>
+                <input type="radio" name="generic" ng-model="studyFilter" value="Heart valve study">
+                <label>Heart valve study</label> <br>
+                <input type="radio" name="generic" ng-model="studyFilter" value="TopoChip screen">
+                <label>TopoChip Screen</label> <br>
+                <input type="radio" name="generic" ng-model="studyFilter" value="Supramolecular">
+                <label>Supramolecular biomaterials</label>
+            </form>
        </div>
+       <div><span></span></div>
        
-        <!-- To query the data sets -->
-        <div style="border:1px solid black;">
-             <form ng-submit="search()">
-               <textarea rows = "5" cols = "50" name = "queryValue" style="resize:none" ng-model="querytext">Enter your query as {key:'value'} or {key:'value',key2:'value2'} for multiple parameter search</textarea>
-               <input type ="submit" name="queryDB"  />
-             </form>
-             <input type='reset' value='Reload all data' ng-submit='restoreData()' />
-             
-        </div>
+      
       
        
       <!-- End the navigation panel -->
@@ -45,7 +39,7 @@
      
         </div>
         <div >
-        <div class="row" style="background-color:white;" ng-repeat="dataEntry in dataset | filter:{Studytype:filter.key} track by $index" >
+        <div class="row" style="background-color:white;" ng-repeat="dataEntry in dataset | filter:{Studytype:studyFilter} track by $index" >
             <div class="card-studyDescription  col-xs-8 ">
               <div class="card-body .card-body-images">
               <h5 id="card-title-studyDescription">{{dataEntry.Studytype}} </h5>
