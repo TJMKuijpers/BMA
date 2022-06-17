@@ -1,5 +1,7 @@
 {
   "dependencies": {
+    "angular-animate": "^1.8.3",
+    "angular-ui-bootstrap": "^2.5.6",
     "angularjs": "^0.0.1",
     "assert": "^2.0.0",
     "body-parser": "^1.20.0",
@@ -11,7 +13,7 @@
     "mongodb": "^4.4.1",
     "mongoose": "^6.3.1",
     "node-restful": "^0.1.17",
-    "nodemon": "^2.0.15",
+    "nodemon": "^2.0.16",
     "path": "^0.12.7",
     "upper-case": "^2.0.2"
   }
