@@ -3,6 +3,7 @@ myApp.component('dataRepository',{
     controller: function($http,$scope,$rootScope) {
         // get the data from the API /get-data
         let dataset=[]
+        $scope.studyFilter="!showallstudies"
         $scope.dataset = $http.get('/get-data');
         $scope.dataset.then(function(response){
             // get the number of studies in the database
@@ -13,9 +14,24 @@ myApp.component('dataRepository',{
         }, function(error){
             console.log('API error: ', error)
         });
+
+        $scope.submit = function (formData) {
+            $scope.formData = formData;
+            $scope.custom_query=$http.get('/custom-query',{params:{text:$scope.formData.search}});
+            $scope.custom_query.then(function(response){
+                console.log(response.data)
+                $rootScope.datasets=response.data;
+                return $scope.dataset=response.data;
+            },function(error){
+            console.log('API error: ', error)
+            });
+        }
+        /*
         $scope.search = function(){
-            var custom_query = $scope.querytext 
-            $scope.custom_query=$http.get('/custom-query',{params:{"search":custom_query}});
+            var query_id= $scope.query1;
+            console.log(query_id)
+            var query_value = $scope.query2;
+            $scope.custom_query=$http.get('/custom-query',{params:{"id":query_id,'value':query_value}});
             $scope.custom_query.then(function(response){
                 console.log(response.data)
                 $rootScope.datasets=response.data;
@@ -30,5 +46,6 @@ myApp.component('dataRepository',{
             $scope.dataset=$rootScope.dataset_all;
         
         }
+        */
     }
 });
