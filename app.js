@@ -38,18 +38,17 @@ app.get('/get-data',function(request,response,next){
   })    
 }); 
 
-/*
+
 app.get('/custom-query',function(request,response,next){
   // this one will be used to launch a custom query and get the results
-  var query_id=request.query.id;
-  var query_value=request.query.value
+  query_text = request.query.text;
   // transform the string to an object
   MongoClient.connect(url, { useNewUrlParser: true }, (error, client) => {
     if (error) {
       return console.log("Connection failed");
     }
     // if no error exists we can ask for the data
-    var cursor = client.db(databaseName).collection('bma').find({query_id:query_value}).toArray().then(
+    var cursor = client.db(databaseName).collection('bma').find({$text:{$search:query_text}}).toArray().then(
     function(obj2){
       client.close()
       // send the object to the frontend
@@ -58,7 +57,7 @@ app.get('/custom-query',function(request,response,next){
   
   }) 
 })
-*/
+
 
 // export the app so we can use it on our server
 module.exports = app;
