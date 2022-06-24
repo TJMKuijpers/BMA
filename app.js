@@ -20,7 +20,6 @@ app.get('/', (request,response)=>{
 
 app.get('/get-data',function(request,response,next){
   var resultArray = [];
-  console.log('Button is calling')
   MongoClient.connect(url, { useNewUrlParser: true }, (error, client) => {
     if (error) {
       return console.log("Connection failed");
