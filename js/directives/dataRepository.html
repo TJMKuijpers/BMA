@@ -19,6 +19,22 @@
        </div>
        <div><span></span></div>
        
+       <div>
+        <span><p> Perform a text search (custom query) </p></span>
+          <form ng-submit="submit(form)"> 
+            <textarea rows="5" cols="40" ng-model="form.search">Type your search here </textarea>
+            <label> Match any:
+            <input type="checkbox" ng-model="checkboxModel.value1">
+            </label>
+            <label> Exact match:
+            <input type="checkbox" ng-model="checkboxModel.value2">
+            </label>
+            <input type="submit">
+          </form>
+          <form ng-submit='reset()'>
+          <input type='reset'>
+          </form>
+        </div>
       
       
        
