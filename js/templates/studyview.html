@@ -26,15 +26,26 @@
 			</div>	
 
 			<!-- Template for the study design -->
-
 				<div class="row">
 				<div class='col-sm-6' ng-repeat="x in $ctrl.studyData.Study_design" >
 						<div class="clearfix" ng-if="$index % 3 == 0"></div>
 						<div class="card-study-overview">
 						<h5 class="card-title-study"> <b>{{x.Name}}</b> </h5>
 							 <div class="card-body-study">
-							 <p class="card-text" ng-repeat="(key,value) in x" ng-if="key!='Name'"><b>{{key}}: </b>{{value}}</p>
-						 		<div ng-if="x.Name=='Surface validation experiment'">
+						<table class="table_study" style="border-collapse: collapse; border: none;" >
+							<tr ng-repeat="(key,value) in x">
+									<td >{{key}} </td>
+									<td ng-switch on="getTypeOf(value)">
+									<table class="table_study" ng-switch-when="object"  border="1">
+										<tr ng-repeat="(key1, value1) in value">
+											<td >{{key1}}</td>
+											<td >{{value1}}</td>
+										</tr>
+									</table>
+									<div ng-switch-default>{{value}}</div>
+							 </tr>
+						</table>						 		
+					<div ng-if="x.Name=='Surface validation experiment'">
 								 <p><i> The selected designs </i> </p>
 								<div style="height: 200px">
 									<div uib-carousel id="ImageExplant" active="active" interval="0" no-wrap="noWrapSlides">
@@ -48,14 +59,14 @@
 						</div>
 				</div>
 				</div>
-
 			<!-- Study Results -->
-				<!-- Note: the object Experiments contains TopoChip fields, so we should remove those -->
-				<div class="card-study-overview" ng-repeat='x in $ctrl.studyData.Study_results'>
-					<h5 class="card-title-study"> <b>{{x.Name}} </b></h5>
-					<p class="card-text" ><b> Summary: </b>{{x.Description}}</p>
+=				<div class='col-sm-6' ng-repeat="x in $ctrl.studyData.Study_results" >
+					<div class="clearfix" ng-if="$index % 3 == 0"></div>
+						<div class="card-study-overview">
+							<h5 class="card-title-study"> <b>{{x.Name}} </b></h5>
+							<p class="card-text" ><b> Summary: </b>{{x.Description}}</p>
+						</div>
 				</div>
-
 		</div>
 		
 
@@ -76,16 +87,29 @@
 			</div>
 
 			<div class="row">
+	
 				<div class='col-sm-6' ng-repeat="x in $ctrl.studyData.Study_design" >
 						<div class="clearfix" ng-if="$index % 3 == 0"></div>
 						<div class="card-study-overview">
 						<h5 class="card-title-study"> <b>{{x.Name}}</b> </h5>
 							 <div class="card-body-study">
-							 <p class="card-text" ng-repeat="(key,value) in x" ng-if="key!='Name' && key !='Images'"><b>{{key}}: </b>{{value}}</p>
+							 <table  style="border-collapse: collapse; border: none;" >
+						<tr ng-repeat="(key,value) in x">
+								<td >{{key}} </td>
+								<td ng-switch on="getTypeOf(value)">
+								<table ng-switch-when="object"  border="1">
+									<tr ng-repeat="(key1, value1) in value">
+										<td >{{key1}}</td>
+										<td >{{value1}}</td>
+									</tr>
+								</table>
+								<div ng-switch-default>{{value}}</div>
+						 </tr>
+					</table>
 							 <div ng-if="x.Name=='Tissue Engineered Heart Valves'">
 								 <p><i> TEHV design </i> </p>
 								<div style="height: 200px">
-									<div uib-carousel id="ImageExplant" active="active" interval="0" no-wrap="noWrapSlides">
+									<div uib-carousel id="ImageDesign" active="active" interval="0" no-wrap="noWrapSlides">
 									<div uib-slide ng-repeat="image in x.Images track by $index" index="$index">
 										<img width="250px" heigth="250px" ng-src="/images/{{image}}" style="margin:auto;">
 									</div>
@@ -99,11 +123,36 @@
 
 
 			<!-- Study Results -->
-				<div class="card-study-overview" ng-repeat='x in $ctrl.studyData.Study_results'>
+				<div class='col-sm-6' ng-repeat="x in $ctrl.studyData.Study_results" >
+				<div class="clearfix" ng-if="$index % 3 == 0"></div>
+				<div class="card-study-overview">
 					<h5 class="card-title-study"> <b>{{x.Name}} </b></h5>
-					<p class="card-text" ng-repeat="(key,value) in x" ng-if="key!='Name'"><b>{{key}}: </b>{{value}}</p>
+					<table  style="border-collapse: collapse; border: none;" >
+						<tr ng-repeat="(key,value) in x">
+								<td >{{key}} </td>
+								<td ng-switch on="getTypeOf(value)">
+								<table ng-switch-when="object"  border="1">
+									<tr ng-repeat="(key1, value1) in value">
+										<td >{{key1}}</td>
+										<td >{{value1}}</td>
+									</tr>
+								</table>
+								<div ng-switch-default>{{value}}</div>
+						 </tr>
+					</table>
+					<div ng-if="x.Name=='Macroscopic appearance'">
+								 <p><i> Explant images </i> </p>
+								<div style="height: 200px">
+									<div uib-carousel id="ImageExplant" active="active" interval="0" no-wrap="noWrapSlides">
+									<div uib-slide ng-repeat="image in x.Explant_image track by $index" index="$index">
+									    <p>{{image}}</p>
+										<img width="250px" heigth="250px" ng-src="images/{{image}}" style="margin:auto;">
+									</div>
+									</div>
+								</div>
+					</div>
 				</div>
-
+				</div>
 
 
 			
