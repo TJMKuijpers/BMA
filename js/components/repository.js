@@ -10,6 +10,8 @@ myApp.component('dataRepository',{
             $scope.datasetcount=Object.keys(response.data).length;
             $rootScope.datasets=response.data;
             $rootScope.dataset_all=response.data;
+            console.log(response.data)
+
             return $scope.dataset=response.data;
         }, function(error){
             console.log('API error: ', error)
@@ -19,7 +21,6 @@ myApp.component('dataRepository',{
             $scope.formData = formData;
             $scope.custom_query=$http.get('/custom-query',{params:{text:$scope.formData.search}});
             $scope.custom_query.then(function(response){
-                console.log(response.data)
                 $rootScope.datasets=response.data;
                 return $scope.dataset=response.data;
             },function(error){
@@ -28,8 +29,11 @@ myApp.component('dataRepository',{
         }
 
         $scope.resetFunction = function(){
-            console.log('Reset the data')
             return $scope.dataset=$rootScope.dataset_all
+        }
+
+        $scope.getTypeOf = function(item){
+            return typeof item;
         }
 
     }

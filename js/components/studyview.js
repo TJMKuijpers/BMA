@@ -12,5 +12,12 @@ function studyViewController($scope,$rootScope,$state,$stateParams){
     study_data=$rootScope.datasets.find(x =>x.ID===this.testid)
     this.studyData=study_data; 
     this.StudyType=this.studyData.Study_type
-    console.log(this.StudyType)
+
+
+
+    $scope.getTypeOf = function(item){
+            return typeof item;
+        }
+
 }
+
