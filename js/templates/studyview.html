@@ -31,20 +31,22 @@
 						<div class="clearfix" ng-if="$index % 3 == 0"></div>
 						<div class="card-study-overview">
 						<h5 class="card-title-study"> <b>{{x.Name}}</b> </h5>
-							 <div class="card-body-study">
-						<table class="table_study" style="border-collapse: collapse; border: none;" >
+						<div class="card-body-study">
+						<table style="border:0px" >
 							<tr ng-repeat="(key,value) in x">
-									<td >{{key}} </td>
-									<td ng-switch on="getTypeOf(value)">
-									<table class="table_study" ng-switch-when="object"  border="1">
+									<td><b>{{key}}:   </b> </td>
+									<td><span>    </span></td>
+									<td  ng-switch on="getTypeOf(value)">
+									<table ng-switch-when="object"  style="border:0px;">
 										<tr ng-repeat="(key1, value1) in value">
-											<td >{{key1}}</td>
-											<td >{{value1}}</td>
+											<td><b>{{key1}}:   </b></td>
+											<td>   {{value1}}</td>
 										</tr>
 									</table>
 									<div ng-switch-default>{{value}}</div>
 							 </tr>
-						</table>						 		
+						</table>	
+						
 					<div ng-if="x.Name=='Surface validation experiment'">
 								 <p><i> The selected designs </i> </p>
 								<div style="height: 200px">
@@ -95,15 +97,15 @@
 							 <div class="card-body-study">
 							 <table  style="border-collapse: collapse; border: none;" >
 						<tr ng-repeat="(key,value) in x">
-								<td >{{key}} </td>
+								<td ><b>{{key}}:  </b> </td>
 								<td ng-switch on="getTypeOf(value)">
-								<table ng-switch-when="object"  border="1">
+								<table ng-switch-when="object">
 									<tr ng-repeat="(key1, value1) in value">
-										<td >{{key1}}</td>
+										<td ><b>{{key1}}: </b></td>
 										<td >{{value1}}</td>
 									</tr>
 								</table>
-								<div ng-switch-default>{{value}}</div>
+								<div ng-switch-default>  {{value}}</div>
 						 </tr>
 					</table>
 							 <div ng-if="x.Name=='Tissue Engineered Heart Valves'">
@@ -129,11 +131,11 @@
 					<h5 class="card-title-study"> <b>{{x.Name}} </b></h5>
 					<table  style="border-collapse: collapse; border: none;" >
 						<tr ng-repeat="(key,value) in x">
-								<td >{{key}} </td>
+								<td ><b>{{key}}</b> </td>
 								<td ng-switch on="getTypeOf(value)">
-								<table ng-switch-when="object"  border="1">
+								<table ng-switch-when="object">
 									<tr ng-repeat="(key1, value1) in value">
-										<td >{{key1}}</td>
+										<td ><b>{{key1}}: </b>   </td>
 										<td >{{value1}}</td>
 									</tr>
 								</table>
