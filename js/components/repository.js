@@ -10,7 +10,23 @@ myApp.component('dataRepository',{
             $scope.datasetcount=Object.keys(response.data).length;
             $rootScope.datasets=response.data;
             $rootScope.dataset_all=response.data;
-            console.log(response.data)
+            // get the cell types in the database
+            var cell_types=[];
+            response.data.forEach(function(){
+            for(let item in response.data){
+                    for(let x in response.data[item]['Study_design']){
+                        // Only take into account the Cell Culture object
+                        if(response.data[item]['Study_design'][x].Name=='Cell culture'){
+                            cell_types.push(response.data[item]['Study_design'][x]['Cell_type'])
+                        }
+                        if(response.data[item]['Study_design'][x].Name=='Tissue Engineered Heart Valves' && response.data[item]['Study_design'][x].hasOwnProperty('Cell_seeding')){
+                             cell_types.push(response.data[item]['Study_design'][x]['Cell_seeding']['Cell_type'])
+                        }
+                }
+            };
+            $scope.cell_types_unique=cell_types.filter((x, i, a) => a.indexOf(x) === i)
+
+            });
 
             return $scope.dataset=response.data;
         }, function(error){
