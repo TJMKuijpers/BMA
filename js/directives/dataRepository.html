@@ -5,20 +5,41 @@
     <div class="col-xs-6 col-sm-3" style="background-color:lavender;">
         <h3>Navigation panel</h3>
         <div style="border:1px solid black;">
-            <h5 style="font-weight:bold">Study type to include:</h5>
-            <form>
-                <input type="radio" name="generic" ng-model="studyFilter" value="!showallstudies" checked>
-                <label> All studies</label> <br>
-                <input type="radio" name="generic" ng-model="studyFilter" value="Heart valve study">
-                <label>Heart valve study</label> <br>
-                <input type="radio" name="generic" ng-model="studyFilter" value="TopoChip screen">
-                <label>TopoChip Screen</label> <br>
-                <input type="radio" name="generic" ng-model="studyFilter" value="Supramolecular">
-                <label>Supramolecular biomaterials</label>
-            </form>
-       </div>
+            <button class="dropdown-btn">Study design<i class="fa fa-caret-down"></i></button>
+                   <div class="dropdown-container">
+                        <button class="dropdown-btn-sub">Study type<i class="fa fa-caret-down"></i></button>
+                        <div class="dropdown-container">
+                            <form style="background-color:lightgrey;">
+                                <input type="radio" name="generic" ng-model="studyFilter" value="!showallstudies" checked>
+                                    <label> All studies</label> <br>
+                                    <input type="radio" name="generic" ng-model="studyFilter" value="Heart valve study">
+                                    <label>Heart valve study</label> <br>
+                                    <input type="radio" name="generic" ng-model="studyFilter" value="Biomaterials Screen">
+                                    <label>Biomaterials Screen</label> <br>
+                                    <input type="radio" name="generic" ng-model="studyFilter" value="Supramolecular">
+                                    <label>Supramolecular biomaterials</label>
+                            </form>
+                        </div>
+                        <button class="dropdown-btn">Platform<i class="fa fa-caret-down"></i></button>
+                        <button class="dropdown-btn">Experiments<i class="fa fa-caret-down"></i></button>
+
+                    </div>
+
        <div><span></span></div>
-       
+       <div style="border:1px solid black;">
+         <button class="dropdown-btn">Biological characteristics<i class="fa fa-caret-down"></i></button>
+            <div class="dropdown-container">
+                <button class="dropdown-btn-sub">Cell type<i class="fa fa-caret-down"></i></button>
+                <div class="dropdown-container">
+                    <nav class='nav_cell_types'>
+                        <ul class='list_cell_types'>
+                            <li class='li_cell_type' ng-repeat='x in cell_types_unique' ><input type="checkbox" ng-model='x' ng-change="updateCellTypes()">{{x}}</li>
+                        </ul>
+                    </nav>
+                </div>
+                <button class="dropdown-btn-sub">Organism<i class="fa fa-caret-down"></i></button>
+            </div>
+       <div><span></span></div>
        <div>
         <span><p> Perform a text search (custom query) </p></span>
           <form ng-submit="submit(form)"> 
@@ -27,8 +48,8 @@
           </form>
           <button ng-click="resetFunction()">Reset </button>
         </div>
-      
-      
+      </div>
+      </div>
        
       <!-- End the navigation panel -->
       </div>
@@ -47,10 +68,10 @@
      
         </div>
         <div >
-        <div class="row" style="background-color:white;" ng-repeat="dataEntry in dataset | filter:{Studytype:studyFilter} track by $index" >
+        <div class="row" style="background-color:white;" ng-repeat="dataEntry in dataset | filter:{Study_type:studyFilter}|filter:{Celltype:CellTypeFilter} track by $index" >
             <div class="card-studyDescription  col-xs-8 ">
               <div class="card-body .card-body-images">
-              <h5 id="card-title-studyDescription">{{dataEntry.Studytype}} </h5>
+              <h5 id="card-title-studyDescription">{{dataEntry.StudyType}} </h5>
               <p class="card-text"><b>Title: </b>{{dataEntry.Title}} </p>
               <p class="card-text"><b>Project: </b>{{dataEntry.Project}} </p>
               <p class="card-text"><b>Lead author: </b>{{dataEntry.Lead_author}} </p>
