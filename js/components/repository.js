@@ -12,22 +12,29 @@ myApp.component('dataRepository',{
             $rootScope.dataset_all=response.data;
             // get the cell types in the database
             var cell_types=[];
+            var projects_available=[];
+            var platforms=[];
             response.data.forEach(function(){
             for(let item in response.data){
+                    projects_available.push(response.data[item]['Project'])
                     for(let x in response.data[item]['Study_design']){
+                        // Get the platforms (experiment)
+                        platforms.push(response.data[item]['Study_design'][x]['Name'])
                         // Only take into account the Cell Culture object
                         if(response.data[item]['Study_design'][x].Name=='Cell culture'){
                             cell_types.push(response.data[item]['Study_design'][x]['Cell_type'])
+                            response.data[item]['CellType']=response.data[item]['Study_design'][x]['Cell_type'];
                         }
                         if(response.data[item]['Study_design'][x].Name=='Tissue Engineered Heart Valves' && response.data[item]['Study_design'][x].hasOwnProperty('Cell_seeding')){
                              cell_types.push(response.data[item]['Study_design'][x]['Cell_seeding']['Cell_type'])
+                             response.data[item]['CellType']=response.data[item]['Study_design'][x]['Cell_seeding']['Cell_type'];
                         }
                 }
             };
             $scope.cell_types_unique=cell_types.filter((x, i, a) => a.indexOf(x) === i)
-
+            $scope.projects_available=projects_available.filter((x,i,a)=> a.indexOf(x)==i)
+            $scope.platforms=platforms.filter((x,i,a)=> a.indexOf(x)==i)
             });
-
             return $scope.dataset=response.data;
         }, function(error){
             console.log('API error: ', error)
@@ -51,10 +58,7 @@ myApp.component('dataRepository',{
         $scope.getTypeOf = function(item){
             return typeof item;
         }
-        $scope.updateCellTypes= function(){
-            console.log('checkbox is clicked')
-        }
-
+   
           var dropdown = document.getElementsByClassName("dropdown-btn");
           var i;
 
