@@ -4,32 +4,72 @@
   <div class="row">
     <div class="col-xs-6 col-sm-3" style="background-color:lavender;">
         <h3>Navigation panel</h3>
-        <div style="border:1px solid black;">
-            <h5 style="font-weight:bold">Study type to include:</h5>
-            <form>
-                <input type="radio" name="generic" ng-model="studyFilter" value="!showallstudies" checked>
-                <label> All studies</label> <br>
-                <input type="radio" name="generic" ng-model="studyFilter" value="Heart valve study">
-                <label>Heart valve study</label> <br>
-                <input type="radio" name="generic" ng-model="studyFilter" value="TopoChip screen">
-                <label>TopoChip Screen</label> <br>
-                <input type="radio" name="generic" ng-model="studyFilter" value="Supramolecular">
-                <label>Supramolecular biomaterials</label>
-            </form>
-       </div>
-       <div><span></span></div>
-       
-       <div>
-        <span><p> Perform a text search (custom query) </p></span>
-          <form ng-submit="submit(form)"> 
-            <textarea rows="5" cols="40" ng-model="form.search">Type your search here </textarea>
-            <input type="submit">
-          </form>
-          <button ng-click="resetFunction()">Reset </button>
+        <div>
+            <p> Selection will show here </p>
+            <p>{{selected.celltype}}</p>
         </div>
-      
-      
-       
+        <div class='container'>
+        <a class="clearfilterbutton" ng-click="clearAllOutput()"> Clear all selections </a>
+        </div>
+            <button class="dropdown-btn">Study design</button>
+                   <div class="dropdown-container">
+                        <button class="dropdown-btn btn-sm dropdown-toggle" style='background-color:RoyalBlue;font-size:18px'>Study</button>
+                            <div class="dropdown-container">
+                                <form>
+                                    <input type="radio" name="generic" ng-model="studyFilter" value="!showallstudies" checked>
+                                        <label> All studies</label> <br>
+                                        <input type="radio" name="generic" ng-model="studyFilter" value="Heart valve study">
+                                        <label>Heart valve study</label> <br>
+                                        <input type="radio" name="generic" ng-model="studyFilter" value="Biomaterials Screen">
+                                        <label>Biomaterials Screen</label> <br>
+                                        <input type="radio" name="generic" ng-model="studyFilter" value="Supramolecular">
+                                        <label>Supramolecular biomaterials</label>
+                                </form>
+                            </div>
+                        <button class="dropdown-btn btn-sm" style='background-color:RoyalBlue;font-size:18px'> Platform </button>
+                            <div class='dropdown-container'>
+                                <nav class='nav_cell_types'>
+                                    <ul class='list_cell_types'>
+                                        <li class='li_cell_type' ng-repeat='x in platforms'><a class="a_navlist" ng-click="addFilterPlatform(x)">{{x}}</a></li>
+                                    </ul>
+                                </nav>
+                                 <div><span><a ng-repeat="x in filterplatform" ng-click="removeFilterPlatform(x)">{{x}}</a></span></div>
+
+                            </div>
+                        <button class="dropdown-btn btn-sm" style='background-color:RoyalBlue;font-size:18px'> Projects </button>
+                            <div class='dropdown-container'>
+                                <nav class='nav_cell_types'>
+                                    <ul class='list_cell_types'>
+                                        <li class='li_cell_type' ng-repeat='x in projects_available'><a class="a_navlist"  ng-click="addFilterProject(x)">{{x}}</a></li>
+                                    </ul>
+                                </nav>
+                                <div><span><a ng-repeat="x in filterproject" ng-click="removeFilterProject(x)">{{x}}</a></span></div>
+                            </div>
+                    </div>  <!-- to end the first dropdown menu -->
+            <button class="dropdown-btn" >Biological characteristics</button>
+                <div class="dropdown-container">
+                    <button class="dropdown-btn btn-sm" style='background-color:RoyalBlue;font-size:18px'> Cell type</button>
+                        <div class="dropdown-container">
+                            <nav class='nav_cell_types'>
+                                <ul class='list_cell_types'>
+                                    <li class='li_cell_type' ng-repeat='x in cell_types_unique' ><a class="a_navlist" ng-click="addFilterCellType(x)">{{x}}</a></li>
+                                </ul>
+                            </nav>
+                            <div><span><a ng-repeat="x in filtercelltype" ng-click="removeFilterCellType(x)">{{x}}</a></span></div>
+
+                        </div>
+                    <button class="dropdown-btn btn-sm" style='background-color:RoyalBlue;font-size:18px'>Organism</button>
+                </div>
+            <button class="dropdown-btn">Custom query: database search</button>
+            <div class="dropdown-container">
+                <span><p> Perform a text search (custom query) </p>
+                <form ng-submit="submit(form)"> 
+                    <textarea rows="5" cols="40" ng-model="form.search">Type your search here </textarea>
+                    <input type="submit">
+                    </form>
+                <button ng-click="resetFunction()">Reset </button>
+                </span>
+            </div>    
       <!-- End the navigation panel -->
       </div>
     
@@ -47,10 +87,10 @@
      
         </div>
         <div >
-        <div class="row" style="background-color:white;" ng-repeat="dataEntry in dataset | filter:{Studytype:studyFilter} track by $index" >
+        <div class="row" style="background-color:white;" ng-repeat="dataEntry in dataset | filter:{Study_type:studyFilter}|filter:filterCellType|filter:filterPlatform|filter:filterProject track by $index" >
             <div class="card-studyDescription  col-xs-8 ">
               <div class="card-body .card-body-images">
-              <h5 id="card-title-studyDescription">{{dataEntry.Studytype}} </h5>
+              <h5 id="card-title-studyDescription">{{dataEntry.StudyType}} </h5>
               <p class="card-text"><b>Title: </b>{{dataEntry.Title}} </p>
               <p class="card-text"><b>Project: </b>{{dataEntry.Project}} </p>
               <p class="card-text"><b>Lead author: </b>{{dataEntry.Lead_author}} </p>
