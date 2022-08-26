@@ -2,7 +2,10 @@ myApp.component('dataRepository',{
     templateUrl:  '/js/directives/dataRepository.html',
     controller: function($http,$scope,$rootScope) {
         // get the data from the API /get-data
-        let dataset=[]
+        let dataset=[];
+        $scope.filtercelltype=[];
+        $scope.filterproject=[];
+        $scope.filterplatform=[];
         $scope.studyFilter="!showallstudies"
         $scope.dataset = $http.get('/get-data');
         $scope.dataset.then(function(response){
@@ -59,6 +62,33 @@ myApp.component('dataRepository',{
             return typeof item;
         }
    
+
+        $scope.addFilterCellType=function(itemvalue){
+            // Push this in the array that contains the cell types
+            $scope.filtercelltype.push(itemvalue);
+        }
+        $scope.removeFilterCellType=function(itemvalue){
+            // Push this in the array that contains the cell types
+            $scope.filtercelltype=$scope.filtercelltype.filter(item => item !== itemvalue);
+        }
+
+        $scope.addFilterPlatform=function(itemvalue){
+            $scope.filterplatform.push(itemvalue);
+        }
+
+        $scope.addFilterProject=function(itemvalue){
+            $scope.filterproject.push(itemvalue);
+        
+        }
+        $scope.removeFilterPlatform=function(itemvalue){
+            // Push this in the array that contains the cell types
+            $scope.filterplatform=$scope.filterplatform.filter(item => item !== itemvalue);
+        }
+        $scope.removeFilterProject=function(itemvalue){
+            // Push this in the array that contains the cell types
+            $scope.filterproject=$scope.filterproject.filter(item => item !== itemvalue);
+        }
+
           var dropdown = document.getElementsByClassName("dropdown-btn");
           var i;
 
