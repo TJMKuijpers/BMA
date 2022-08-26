@@ -4,9 +4,16 @@
   <div class="row">
     <div class="col-xs-6 col-sm-3" style="background-color:lavender;">
         <h3>Navigation panel</h3>
+        <div>
+            <p> Selection will show here </p>
+            <p>{{selected.celltype}}</p>
+        </div>
+        <div class='container'>
+        <a class="clearfilterbutton" href=""> Clear all selections </a>
+        </div>
             <button class="dropdown-btn">Study design</button>
                    <div class="dropdown-container">
-                        <button class="dropdown-btn btn-sm dropdown-toggle" style='background-color:RoyalBlue'>Study</button>
+                        <button class="dropdown-btn btn-sm dropdown-toggle" style='background-color:RoyalBlue;font-size:18px'>Study</button>
                             <div class="dropdown-container">
                                 <form>
                                     <input type="radio" name="generic" ng-model="studyFilter" value="!showallstudies" checked>
@@ -19,34 +26,35 @@
                                         <label>Supramolecular biomaterials</label>
                                 </form>
                             </div>
-                        <button class="dropdown-btn btn-sm" style='background-color:RoyalBlue'> Platform </button>
+                        <button class="dropdown-btn btn-sm" style='background-color:RoyalBlue;font-size:18px'> Platform </button>
                             <div class='dropdown-container'>
                                 <nav class='nav_cell_types'>
                                     <ul class='list_cell_types'>
-                                        <li class='li_cell_type' ng-repeat='x in platforms'><input type='checkbox'>{{x}}</li>
+                                        <li class='li_cell_type' ng-repeat='x in platforms'><a class="a_navlist" href="#" ng-click="addFilterPlatform(x)">{{x}}</a></li>
                                     </ul>
                                 </nav>
                             </div>
-                        <button class="dropdown-btn btn-sm" style='background-color:RoyalBlue'> Projects </button>
+                        <button class="dropdown-btn btn-sm" style='background-color:RoyalBlue;font-size:18px'> Projects </button>
                             <div class='dropdown-container'>
                                 <nav class='nav_cell_types'>
                                     <ul class='list_cell_types'>
-                                        <li class='li_cell_type' ng-repeat='x in projects_available'><input type='checkbox'>{{x}}</li>
+                                        <li class='li_cell_type' ng-repeat='x in projects_available'><a class="a_navlist"  ng-click="addFilterProject(x)">{{x}}</a></li>
                                     </ul>
                                 </nav>
+                                <div><span><a ng-repeat="x in filterproject" ng-click="removeFilterProject(x)">{{x}}</a></span></div>
                             </div>
                     </div>  <!-- to end the first dropdown menu -->
             <button class="dropdown-btn" >Biological characteristics</button>
                 <div class="dropdown-container">
-                    <button class="dropdown-btn btn-sm" style='background-color:RoyalBlue'> Cell type</button>
+                    <button class="dropdown-btn btn-sm" style='background-color:RoyalBlue;font-size:18px'> Cell type</button>
                         <div class="dropdown-container">
                             <nav class='nav_cell_types'>
                                 <ul class='list_cell_types'>
-                                    <li class='li_cell_type' ng-repeat='x in cell_types_unique' ><input type="checkbox">{{x}}</li>
+                                    <li class='li_cell_type' ng-repeat='x in cell_types_unique' ><a class="a_navlist" href="#" ng-click="addFilterCellType(x)">{{x}}</a></li>
                                 </ul>
                             </nav>
                         </div>
-                    <button class="dropdown-btn btn-sm" style='background-color:RoyalBlue'>Organism</button>
+                    <button class="dropdown-btn btn-sm" style='background-color:RoyalBlue;font-size:18px'>Organism</button>
                 </div>
             <button class="dropdown-btn">Custom query: database search</button>
             <div class="dropdown-container">
