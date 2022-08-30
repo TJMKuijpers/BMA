@@ -9,7 +9,7 @@
             <p>{{selected.celltype}}</p>
         </div>
         <div class='container'>
-        <a class="clearfilterbutton" href=""> Clear all selections </a>
+        <a class="clearfilterbutton" ng-click="clearAllOutput()"> Clear all selections </a>
         </div>
             <button class="dropdown-btn">Study design</button>
                    <div class="dropdown-container">
@@ -30,9 +30,11 @@
                             <div class='dropdown-container'>
                                 <nav class='nav_cell_types'>
                                     <ul class='list_cell_types'>
-                                        <li class='li_cell_type' ng-repeat='x in platforms'><a class="a_navlist" href="#" ng-click="addFilterPlatform(x)">{{x}}</a></li>
+                                        <li class='li_cell_type' ng-repeat='x in platforms'><a class="a_navlist" ng-click="addFilterPlatform(x)">{{x}}</a></li>
                                     </ul>
                                 </nav>
+                                 <div><span><a ng-repeat="x in filterplatform" ng-click="removeFilterPlatform(x)">{{x}}</a></span></div>
+
                             </div>
                         <button class="dropdown-btn btn-sm" style='background-color:RoyalBlue;font-size:18px'> Projects </button>
                             <div class='dropdown-container'>
@@ -50,9 +52,11 @@
                         <div class="dropdown-container">
                             <nav class='nav_cell_types'>
                                 <ul class='list_cell_types'>
-                                    <li class='li_cell_type' ng-repeat='x in cell_types_unique' ><a class="a_navlist" href="#" ng-click="addFilterCellType(x)">{{x}}</a></li>
+                                    <li class='li_cell_type' ng-repeat='x in cell_types_unique' ><a class="a_navlist" ng-click="addFilterCellType(x)">{{x}}</a></li>
                                 </ul>
                             </nav>
+                            <div><span><a ng-repeat="x in filtercelltype" ng-click="removeFilterCellType(x)">{{x}}</a></span></div>
+
                         </div>
                     <button class="dropdown-btn btn-sm" style='background-color:RoyalBlue;font-size:18px'>Organism</button>
                 </div>
@@ -83,7 +87,7 @@
      
         </div>
         <div >
-        <div class="row" style="background-color:white;" ng-repeat="dataEntry in dataset | filter:{Study_type:studyFilter}|filter:{Project:ProjectFilter} track by $index" >
+        <div class="row" style="background-color:white;" ng-repeat="dataEntry in dataset | filter:{Study_type:studyFilter}|filter:filterCellType|filter:filterPlatform|filter:filterProject track by $index" >
             <div class="card-studyDescription  col-xs-8 ">
               <div class="card-body .card-body-images">
               <h5 id="card-title-studyDescription">{{dataEntry.StudyType}} </h5>
