@@ -38,6 +38,7 @@ myApp.component('dataRepository',{
             $scope.projects_available=projects_available.filter((x,i,a)=> a.indexOf(x)==i)
             $scope.platforms=platforms.filter((x,i,a)=> a.indexOf(x)==i)
             });
+            console.log(response.data)
             return $scope.dataset=response.data;
         }, function(error){
             console.log('API error: ', error)
@@ -65,7 +66,10 @@ myApp.component('dataRepository',{
 
         $scope.addFilterCellType=function(itemvalue){
             // Push this in the array that contains the cell types
-            $scope.filtercelltype.push(itemvalue);
+            if ($scope.filtercelltype.includes(itemvalue)==false){
+            $scope.filtercelltype.push(itemvalue);}
+            console.log($scope.filtercelltype)
+
         }
         $scope.removeFilterCellType=function(itemvalue){
             // Push this in the array that contains the cell types
@@ -73,11 +77,13 @@ myApp.component('dataRepository',{
         }
 
         $scope.addFilterPlatform=function(itemvalue){
-            $scope.filterplatform.push(itemvalue);
+            if ($scope.filterplatform.includes(itemvalue)==false){
+            $scope.filterplatform.push(itemvalue);}
         }
 
         $scope.addFilterProject=function(itemvalue){
-            $scope.filterproject.push(itemvalue);
+            if ($scope.filterproject.includes(itemvalue)==false){
+            $scope.filterproject.push(itemvalue);}
         
         }
         $scope.removeFilterPlatform=function(itemvalue){
@@ -87,6 +93,58 @@ myApp.component('dataRepository',{
         $scope.removeFilterProject=function(itemvalue){
             // Push this in the array that contains the cell types
             $scope.filterproject=$scope.filterproject.filter(item => item !== itemvalue);
+        }
+
+        $scope.filterCellType=function(x){
+            if($scope.filtercelltype.length!=0){
+                return $scope.filtercelltype.includes(x.CellType)}
+            else{
+                return true
+            }
+        }
+        $scope.filterPlatform=function(x){
+            objectkeys=Object.keys(x.Study_design)
+            bool_array=[]
+            if($scope.filterplatform.length!=0){
+                for(let y=0; y<objectkeys.length;y++){
+                    if($scope.filterplatform.length==1){
+                    var temp_bool=$scope.filterplatform.includes(x.Study_design[objectkeys[y]].Name)
+                    if(temp_bool){
+                        return true
+                        }
+                    }
+                    if($scope.filterplatform.length>1){
+                        // Now we have to check if all the selected filters are in the dataset
+                        var temp_bool=$scope.filterplatform.includes(x.Study_design[objectkeys[y]].Name)
+                        console.log(temp_bool)
+                        if(temp_bool){
+                            bool_array.push(temp_bool)
+                        }
+                        console.log(bool_array)
+                        if(bool_array.every(element => element === true) && bool_array.length ==$scope.filterplatform.length){
+                             return true
+                           }
+                    }
+                }
+            }else{
+                return true
+            }
+        }
+        $scope.filterProject=function(x){
+            if($scope.filterproject.length!=0){
+                return $scope.filterproject.includes(x.Project)
+            }else{
+                return true
+            }
+        }
+
+        $scope.clearAllOutput=function(){
+            $scope.filtercelltype=[];
+            $scope.filterproject=[];
+            $scope.filterplatform=[];
+            $scope.filterProject();
+            $scope.filterPlatform();
+            $scope.filterCellType();
         }
 
           var dropdown = document.getElementsByClassName("dropdown-btn");
