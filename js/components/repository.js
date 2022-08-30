@@ -116,6 +116,7 @@ myApp.component('dataRepository',{
                     if($scope.filterplatform.length>1){
                         // Now we have to check if all the selected filters are in the dataset
                         var temp_bool=$scope.filterplatform.includes(x.Study_design[objectkeys[y]].Name)
+
                         if(temp_bool){
                             bool_array.push(temp_bool)
                         }
@@ -124,6 +125,7 @@ myApp.component('dataRepository',{
                            }
                     }
                 }
+
             }else{
                 return true
             }
