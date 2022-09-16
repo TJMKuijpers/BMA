@@ -24,6 +24,8 @@ function studyViewController($scope,$rootScope,$state,$stateParams){
     var margin_bottom=20;
     var height=500-margin_top-margin_bottom;
     var width=500-margin_left-margin_right;
+    d3.selectAll("#plotarea > *").remove();
+
     var svg = d3.select("#plotarea").append("svg")
     .attr("width", width + margin_left + margin_right)
     .attr("height", height + margin_top + margin_bottom)
@@ -38,13 +40,27 @@ function studyViewController($scope,$rootScope,$state,$stateParams){
     var implant_group=Array(labels_implant.length).fill("Implant");
     var groups=control_group.concat(implant_group);
     combined_labels=labels_control.concat(labels_implant);
+    console.log(dataset_study.Control_sample_values)
+    console.log(dataset_study.Implant_sample_values)
+    // Make sure that both experimental value data sets are arrays
+    if(Array.isArray(dataset_study.Control_sample_values)==false){
+        dataset_study.Control_sample_values=dataset_study.Control_sample_values.split(",")
+    }
+    if(Array.isArray(dataset_study.Implant_sample_values)==false){
+        dataset_study.Implant_sample_values=dataset_study.Implant_sample_values.split(",")
+    }
     // Combine the experimental values
     combined_data=dataset_study.Control_sample_values.concat(dataset_study.Implant_sample_values)
     
     // convert strings to numeric values
     arrOfNumbers=[]
     combined_data.forEach(str => {
-  arrOfNumbers.push(Number(str));
+        if(typeof str =='string'){
+            arrOfNumbers.push(Number(str));
+        }else{
+        arrOfNumbers.push(str);
+        }
+  
     })
     
     arr = [];
@@ -68,7 +84,7 @@ function studyViewController($scope,$rootScope,$state,$stateParams){
     .style("text-anchor", "end");
   
   var y_axis = d3.scaleLinear()
-  .domain([0,10])
+  .domain([0,d3.max(arr,function(d){return d.value})])
   .range([ height, 0]);
   
   svg.append("g").call(d3.axisLeft(y_axis));
