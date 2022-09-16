@@ -88,9 +88,8 @@
 			
 
 				<div class="row">
-					<div class='col-sm-6' ng-repeat="x in $ctrl.studyData.Study_design" >
-						<div class="clearfix" ng-if="$index % 3 == 0"></div>
-							<div class="card-study-overview">
+					<div class='col-sm-6' >
+							<div class="card-study-overview" ng-repeat="x in $ctrl.studyData.Study_design" >
 								<h5 class="card-title-study"> <b>{{x.Name}}</b> </h5>
 									<div class="card-body-study">
 										<table  style="border-collapse: collapse; border: none;" >
@@ -118,13 +117,13 @@
 										</div>
 									</div>
 							</div>
-						</div>
+						
 					</div>
 
 
-					<div class='col-sm-6' ng-repeat="x in $ctrl.studyData.Study_results" >
-						<div class="clearfix" ng-if="$index % 3 == 0"></div>
-							<div class="card-study-overview" ng-if="x.Name!='In vitro performance'" >
+					<div class='col-sm-6'>
+					<div ng-repeat="x in $ctrl.studyData.Study_results">
+							<div class="card-study-overview"  ng-if="x.Name!='In vitro performance'" >
 								<h5 class="card-title-study"> <b>{{x.Name}} </b></h5>
 									<table  style="border-collapse: collapse; border: none;" >
 										<tr ng-repeat="(key,value) in x">
@@ -168,6 +167,7 @@
 						</div>
 						</div>
 					</div>
+				  </div>
 			</div>
 		</div>
 		<!-- closing of the heart valve -->
