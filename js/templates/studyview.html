@@ -122,9 +122,9 @@
 					</div>
 
 
-					<div class='col-sm-6' ng-repeat="x in $ctrl.studyData.Study_results" ng-if="x.Name!='In vitro performance'" >
+					<div class='col-sm-6' ng-repeat="x in $ctrl.studyData.Study_results" >
 						<div class="clearfix" ng-if="$index % 3 == 0"></div>
-							<div class="card-study-overview">
+							<div class="card-study-overview" ng-if="x.Name!='In vitro performance'" >
 								<h5 class="card-title-study"> <b>{{x.Name}} </b></h5>
 									<table  style="border-collapse: collapse; border: none;" >
 										<tr ng-repeat="(key,value) in x">
@@ -151,6 +151,21 @@
 										</div>
 									</div>
 							</div>
+
+					<!-- test area for the barplot -->
+						<div class="card-study-overview" ng-if="x.Name =='In vitro performance'">
+							<h5 class="card-title-study"><b>{{x.Name}}</b></h5>
+							<div class="card-body">
+								<svg id="plotarea" height='500' width="100%" ng-init='drawBar(x.Closing_volume)'></svg>
+							</div>
+							<div>
+							<button id='ClosingVolume' ng-click='drawBar(x.Closing_volume)'>Closing volume </button>
+							<button id='StrokeVolume' ng-click='drawBar(x.Stroke_volume)'>Stroke volume </button>
+							<button id='Regurgitaiton' ng-click='drawBar(x.Regurgitaiton)'>Regurgitation</button>
+							<button id='LeakageVolume' ng-click='drawBar(x.Leakage_volume)'>Leakage volume </button>
+							<button id='OreficeArea' ng-click='drawBar(x.Orefice_area)'>Orefice area </button>
+							</div>
+						</div>
 						</div>
 					</div>
 			</div>
